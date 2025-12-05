@@ -1,0 +1,28 @@
+{
+  "name": "bryssel-website",
+  "version": "1.0.0",
+  "description": "We Are Bryssel - Kreativ Eventbyrå med AI-driven chattbot",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "event",
+    "eventbyrå",
+    "göteborg",
+    "bryssel"
+  ],
+  "author": "We Are Bryssel AB",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "openai": "^4.20.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

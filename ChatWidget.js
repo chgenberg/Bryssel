@@ -1,10 +1,13 @@
 // ChatWidget Component for We Are Bryssel
+// AI-powered chatbot with Gothenburg humor
 class ChatWidget {
     constructor() {
         this.isOpen = false;
         this.messages = [];
+        this.conversationHistory = [];
         this.isTyping = false;
         this.showContactForm = false;
+        this.apiEndpoint = '/api/chat';
         this.init();
     }
 
@@ -31,8 +34,8 @@ class ChatWidget {
             <div class="chat-window" id="chat-window">
                 <div class="chat-header">
                     <div class="chat-header-content">
-                        <h3>Bryssel Support</h3>
-                        <p>Vi hjälper dig att skapa oförglömliga upplevelser</p>
+                        <h3>Bryssel AI</h3>
+                        <p>Din göteborgska eventassistent 🦐</p>
                     </div>
                     <button class="chat-close" id="chat-close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -186,14 +189,14 @@ class ChatWidget {
     addWelcomeMessage() {
         const welcomeMsg = {
             type: 'bot',
-            content: 'Hej! Jag är Bryssels AI-assistent. Jag kan hjälpa dig med information om våra tjänster, priser, och boka möten. Hur kan jag hjälpa dig idag?',
+            content: 'Tjena! 👋 Jag är Bryssels AI-assistent – en riktig göteborgare som älskar event! Fråga mig vad som helst om våra tjänster, event i allmänhet, eller om du vill skapa något riktigt fett. Vad kan jag hjälpa dig med iansen?',
             time: new Date()
         };
         this.messages.push(welcomeMsg);
         this.renderMessages();
     }
 
-    sendMessage() {
+    async sendMessage() {
         const input = document.getElementById('chat-input');
         const message = input.value.trim();
         
@@ -212,57 +215,83 @@ class ChatWidget {
         // Show typing indicator
         this.showTypingIndicator();
         
-        // Get bot response after delay
-        setTimeout(() => {
-            const response = this.getBotResponse(message);
+        try {
+            // Call AI API
+            const response = await this.getAIResponse(message);
+            
             this.messages.push({
                 type: 'bot',
                 content: response,
                 time: new Date()
             });
-            this.hideTypingIndicator();
-            this.renderMessages();
-        }, 1000);
+        } catch (error) {
+            console.error('Chat error:', error);
+            this.messages.push({
+                type: 'bot',
+                content: 'Oj, något gick snett där! Prova igen eller kontakta oss på info@wearebryssel.se så hjälper vi dig. 🙏',
+                time: new Date()
+            });
+        }
+        
+        this.hideTypingIndicator();
+        this.renderMessages();
     }
 
-    getBotResponse(userInput) {
+    async getAIResponse(userMessage) {
+        try {
+            const response = await fetch(this.apiEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: userMessage,
+                    conversationHistory: this.conversationHistory
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.error && data.fallback) {
+                return data.response;
+            }
+
+            if (data.conversationHistory) {
+                this.conversationHistory = data.conversationHistory;
+            }
+
+            return data.response;
+        } catch (error) {
+            // Fallback to local responses if API fails
+            return this.getLocalResponse(userMessage);
+        }
+    }
+
+    getLocalResponse(userInput) {
         const input = userInput.toLowerCase();
         
-        // Event-specific responses
-        if (input.includes('event') || input.includes('evenemang')) {
-            return 'Vi hjälper företag att skapa minnesvärda event! Vi erbjuder allt från eventproduktion och projektledning till lanseringar, jubileum, turnéer och konferenser. Vilket typ av event är du intresserad av?';
+        // Göteborgsk fallback responses
+        if (input.includes('hej') || input.includes('hallå') || input.includes('tjena')) {
+            return 'Tjena gansen! 👋 Najs att du hör av dig! Jag kan hjälpa dig med allt som har med event att göra. Vad funderar du på?';
         }
         
-        if (input.includes('pris') || input.includes('kosta') || input.includes('budget')) {
-            return 'Våra priser varierar beroende på eventets storlek och omfattning. Vi skräddarsyr alltid en offert baserat på era specifika behov. Vill du boka ett möte för att diskutera ditt projekt?';
+        if (input.includes('event') || input.includes('fest') || input.includes('konferens')) {
+            return 'Åh, event va? Då snackar vi! 🎉 Det är ju det göttiga som finns! Vi på Bryssel fixar allt från läckra konferenser till feta lanseringar. Berätta mer om vad du har i kikaren!';
         }
         
-        if (input.includes('konferens')) {
-            return 'Vi arrangerar professionella konferenser med en twist! Från mindre seminarier till stora konferenser med hundratals deltagare. Vi tar hand om allt från lokal och teknik till talare och underhållning.';
+        if (input.includes('pris') || input.includes('kosta')) {
+            return 'Priset beror helt på hur stort och fräckt event du vill ha! Vi skräddarsyr alltid, ingen copy-paste här inte. Hojta till på info@wearebryssel.se så tar vi en käk... eller ja, en offert! 😄';
         }
         
-        if (input.includes('lansering') || input.includes('produkt')) {
-            return 'Produktlanseringar är vår specialitet! Vi skapar event som får din nya produkt eller tjänst att sticka ut. När något nytt ska möta världen ska det kännas på riktigt.';
+        if (input.includes('göteborg') || input.includes('gbg')) {
+            return 'Göteborg! Bästa staden ansen! 💙🤍 Vi sitter på Kungstorget mitt i smeten. Perfekt läge för att fixa event i hela Västsverige... och resten av världen förstås!';
         }
         
-        if (input.includes('turné') || input.includes('roadshow')) {
-            return 'Vi tar ditt varumärke ut på vägarna! Med genomarbetad logistik och storytelling skapar vi turnéer och roadshows som engagerar publik över hela landet.';
+        if (input.includes('kontakt') || input.includes('boka')) {
+            return 'Klart du ska höra av dig! Maila info@wearebryssel.se eller kom förbi kontoret på Kungstorget 11. Vi bjuder på kaffe! ☕';
         }
         
-        if (input.includes('jubileum') || input.includes('firande')) {
-            return 'Ett jubileum är mer än bara en fest - det är en möjlighet att bygga vidare på företagets historia och blicka mot framtiden. Vi skapar firanden som stärker både intern stolthet och externa relationer.';
-        }
-        
-        if (input.includes('kontakt') || input.includes('boka') || input.includes('möte')) {
-            return 'Självklart! Klicka på "Jag vill bli kontaktad" nedan så hjälper vi dig att boka ett möte. Du kan välja mellan e-post, telefon eller ett personligt möte.';
-        }
-        
-        if (input.includes('hej') || input.includes('hallå') || input.includes('hi')) {
-            return 'Hej! Trevligt att höra från dig. Jag kan hjälpa dig med information om våra eventtjänster, svara på frågor om priser eller hjälpa dig att boka ett möte. Vad är du intresserad av?';
-        }
-        
-        // Default response
-        return 'Tack för ditt meddelande! Vi på Bryssel hjälper företag att skapa oförglömliga upplevelser genom event. Vill du veta mer om någon specifik tjänst eller boka ett möte?';
+        return 'Intressant fråga! 🤔 Men jag är mest insnöad på event och Bryssel-relaterade grejer. Har du nån fråga om det så är jag på! Annars kan du alltid maila oss på info@wearebryssel.se.';
     }
 
     showTypingIndicator() {
@@ -441,12 +470,12 @@ class ChatWidget {
         const successMessage = document.createElement('div');
         successMessage.className = 'success-message';
         successMessage.innerHTML = `
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#a6894f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
             <h3>Tack för din förfrågan!</h3>
-            <p>Vi återkommer till dig så snart som möjligt.</p>
+            <p>Vi hör av oss inom kort. Läpp! 🙌</p>
         `;
         
         form.style.display = 'none';
