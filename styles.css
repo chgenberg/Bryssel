@@ -692,7 +692,7 @@ button,
 }
 
 .section-intro-light {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .case-grid {
