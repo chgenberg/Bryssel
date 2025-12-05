@@ -365,7 +365,7 @@
 </head>
 <body itemscope itemtype="https://schema.org/LocalBusiness">
     <!-- Skip to main content for accessibility -->
-    <a href="#main-content" class="skip-link">Hoppa till huvudinnehåll</a>
+    <a href="#main-content" class="skip-link" data-i18n="skip.link">Hoppa till huvudinnehåll</a>
     
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Läsningsframsteg">
@@ -379,21 +379,40 @@
                 <img src="public/Bryssel_media/Bryssel_liggande/Bryssel liggande transparent.png" alt="Bryssel" class="nav-logo-img">
             </a>
             <ul class="nav-menu">
-                <li><a href="#start">Start</a></li>
+                <li><a href="#start" data-i18n="nav.start">Start</a></li>
                 <li class="has-dropdown">
-                    <a href="#om">Om oss</a>
+                    <a href="#om" data-i18n="nav.about">Om oss</a>
                     <ul class="dropdown">
-                        <li><a href="#om">Om Bryssel</a></li>
-                        <li><a href="#vision">Vision</a></li>
-                        <li><a href="#mission">Mission</a></li>
-                        <li><a href="#varderingar">Värderingar</a></li>
+                        <li><a href="#om" data-i18n="nav.about.bryssel">Om Bryssel</a></li>
+                        <li><a href="#vision" data-i18n="nav.vision">Vision</a></li>
+                        <li><a href="#mission" data-i18n="nav.mission">Mission</a></li>
+                        <li><a href="#varderingar" data-i18n="nav.values">Värderingar</a></li>
                     </ul>
                 </li>
-                <li><a href="#case">Case</a></li>
-                <li><a href="#vad-vi-gor">Tjänster</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#case" data-i18n="nav.case">Case</a></li>
+                <li><a href="#vad-vi-gor" data-i18n="nav.services">Tjänster</a></li>
+                <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
             </ul>
+            <!-- Language Switcher -->
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="sv" aria-label="Svenska" title="Svenska">
+                    <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                        <path fill="#006aa7" d="M0 0h640v480H0z"/>
+                        <path fill="#fecc00" d="M0 192h640v96H0z"/>
+                        <path fill="#fecc00" d="M176 0h96v480h-96z"/>
+                    </svg>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English" title="English">
+                    <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                        <path fill="#012169" d="M0 0h640v480H0z"/>
+                        <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z"/>
+                        <path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z"/>
+                        <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z"/>
+                        <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z"/>
+                    </svg>
+                </button>
+            </div>
             <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -408,8 +427,8 @@
         <!-- Hero Section with Showreel Video -->
         <section id="start" class="hero hero-video-section" aria-label="Välkommen till We Are Bryssel">
             <div class="hero-content">
-                <h1 class="hero-title" itemprop="name">We Are Bryssel</h1>
-                <p class="hero-subtitle" itemprop="slogan">Upplevelser som känns – i magen, i hjärtat och i minnet.</p>
+                <h1 class="hero-title" itemprop="name" data-i18n="hero.title">We Are Bryssel</h1>
+                <p class="hero-subtitle" itemprop="slogan" data-i18n="hero.subtitle">Upplevelser som känns – i magen, i hjärtat och i minnet.</p>
                 <p class="hero-description visually-hidden" itemprop="description">Bryssel är en kreativ eventbyrå i Göteborg som skapar minnesvärda upplevelser. Vi specialiserar oss på konferenser, produktlanseringar, jubileum, roadshows och mässor för företag i alla branscher.</p>
                 
                 <!-- Showreel Video -->
@@ -426,7 +445,7 @@
                         >
                             <source src="public/showreel_v2_uncropped.mov" type="video/quicktime">
                             <source src="public/showreel_v2_uncropped.mov" type="video/mp4">
-                            Din webbläsare stödjer inte videouppspelning.
+                            <span data-i18n="hero.video.fallback">Din webbläsare stödjer inte videouppspelning.</span>
                         </video>
                         <button class="showreel-play-btn" aria-label="Spela/Pausa video">
                             <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
@@ -440,7 +459,7 @@
                 </div>
 
                 <div class="hero-cta">
-                    <button class="hero-link" data-event-generator role="button" aria-label="Få din unika event-idé med AI">Få din event-idé</button>
+                    <button class="hero-link" data-event-generator role="button" aria-label="Få din unika event-idé med AI" data-i18n="hero.cta">Få din event-idé</button>
                 </div>
             </div>
         </section>
@@ -464,14 +483,14 @@
         <!-- Om Bryssel -->
         <section id="om" class="section" aria-labelledby="om-heading" itemscope itemtype="https://schema.org/AboutPage">
             <div class="container">
-                <h2 id="om-heading" class="section-title" itemprop="name">Om Bryssel</h2>
+                <h2 id="om-heading" class="section-title" itemprop="name" data-i18n="about.title">Om Bryssel</h2>
                 <div class="about-grid">
                     <div class="about-content">
-                        <p class="lead">Bryssel är en kreativ eventbyrå som skapar upplevelser som känns – i magen, i hjärtat och i minnet.</p>
-                        <p>Vi tror på att äkta engagemang, yrkesstolthet och ärlighet bygger de starkaste relationerna – både inom teamet och med våra kunder. Därför levererar vi inte bara evenemang, utan upplevelser med mening.</p>
-                        <p>Vi är en hybridbyrå: vi tar oss an uppdrag där vi verkligen kan göra skillnad, där vår erfarenhet och fingertoppskänsla lyfter helheten och där resultatet blir något oväntat – och ofta succé.</p>
-                        <p>Vår styrka ligger i kombinationen av kreativitet, trygghet och precision. Vi är lika delar strategiska rådgivare som passionerade doers. Hos oss får du både struktur och magi.</p>
-                        <p class="highlight">Vi översäljer inte. Vi levererar. Varje gång.</p>
+                        <p class="lead" data-i18n="about.lead">Bryssel är en kreativ eventbyrå som skapar upplevelser som känns – i magen, i hjärtat och i minnet.</p>
+                        <p data-i18n="about.p1">Vi tror på att äkta engagemang, yrkesstolthet och ärlighet bygger de starkaste relationerna – både inom teamet och med våra kunder. Därför levererar vi inte bara evenemang, utan upplevelser med mening.</p>
+                        <p data-i18n="about.p2">Vi är en hybridbyrå: vi tar oss an uppdrag där vi verkligen kan göra skillnad, där vår erfarenhet och fingertoppskänsla lyfter helheten och där resultatet blir något oväntat – och ofta succé.</p>
+                        <p data-i18n="about.p3">Vår styrka ligger i kombinationen av kreativitet, trygghet och precision. Vi är lika delar strategiska rådgivare som passionerade doers. Hos oss får du både struktur och magi.</p>
+                        <p class="highlight" data-i18n="about.highlight">Vi översäljer inte. Vi levererar. Varje gång.</p>
                     </div>
                     <div class="about-image">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/Pmflex_Factory__Q9A0335-Enhanced-NR.jpg" alt="Bryssel event catering">
@@ -483,57 +502,57 @@
         <!-- Case/Portfolio Section -->
         <section id="case" class="section section-dark" aria-labelledby="case-heading">
             <div class="container">
-                <h2 id="case-heading" class="section-title section-title-light">Våra case</h2>
-                <p class="section-intro section-intro-light">Ett urval av projekt där vi skapat minnesvärda upplevelser för våra kunder.</p>
+                <h2 id="case-heading" class="section-title section-title-light" data-i18n="case.title">Våra case</h2>
+                <p class="section-intro section-intro-light" data-i18n="case.intro">Ett urval av projekt där vi skapat minnesvärda upplevelser för våra kunder.</p>
                 
                 <div class="case-grid">
                     <div class="case-item case-large">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/Hamburg on tour15.jpg" alt="Hamburg on Tour">
                         <div class="case-overlay">
-                            <h3>Hamburg on Tour</h3>
-                            <p>Roadshow & Turné</p>
+                            <h3 data-i18n="case.hamburg">Hamburg on Tour</h3>
+                            <p data-i18n="case.hamburg.type">Roadshow & Turné</p>
                         </div>
                     </div>
                     <div class="case-item">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/Bingolotto25år4.JPG" alt="Bingolotto 25 år">
                         <div class="case-overlay">
-                            <h3>Bingolotto 25 år</h3>
-                            <p>Jubileum</p>
+                            <h3 data-i18n="case.bingolotto">Bingolotto 25 år</h3>
+                            <p data-i18n="case.bingolotto.type">Jubileum</p>
                         </div>
                     </div>
                     <div class="case-item">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/ga_sailracing_opening_clubhouse2014_1.jpg" alt="Sail Racing">
                         <div class="case-overlay">
-                            <h3>Sail Racing</h3>
-                            <p>Butiksöppning</p>
+                            <h3 data-i18n="case.sailracing">Sail Racing</h3>
+                            <p data-i18n="case.sailracing.type">Butiksöppning</p>
                         </div>
                     </div>
                     <div class="case-item">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/cs3sthlm-3568.jpg" alt="CS3 Stockholm">
                         <div class="case-overlay">
-                            <h3>CS3 Stockholm</h3>
-                            <p>Konferens</p>
+                            <h3 data-i18n="case.cs3">CS3 Stockholm</h3>
+                            <p data-i18n="case.cs3.type">Konferens</p>
                         </div>
                     </div>
                     <div class="case-item case-large">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/ga_white60_ny_3.jpg" alt="White Event">
                         <div class="case-overlay">
-                            <h3>White Gala</h3>
-                            <p>Gala & Middag</p>
+                            <h3 data-i18n="case.white">White Gala</h3>
+                            <p data-i18n="case.white.type">Gala & Middag</p>
                         </div>
                     </div>
                     <div class="case-item">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/ga_vw_pontoon_ny_1.jpg" alt="Volkswagen Pontoon">
                         <div class="case-overlay">
-                            <h3>Volkswagen</h3>
-                            <p>Mässa & Installation</p>
+                            <h3 data-i18n="case.vw">Volkswagen</h3>
+                            <p data-i18n="case.vw.type">Mässa & Installation</p>
                         </div>
                     </div>
                     <div class="case-item">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/PIcadeli monter Paris.jpeg" alt="Picadeli Paris">
                         <div class="case-overlay">
-                            <h3>Picadeli</h3>
-                            <p>Mässmonter Paris</p>
+                            <h3 data-i18n="case.picadeli">Picadeli</h3>
+                            <p data-i18n="case.picadeli.type">Mässmonter Paris</p>
                         </div>
                     </div>
                 </div>
@@ -543,8 +562,8 @@
         <!-- Vad vi gör - med bilder -->
         <section id="vad-vi-gor" class="section" aria-labelledby="tjanster-heading" itemscope itemtype="https://schema.org/Service">
             <div class="container">
-                <h2 id="tjanster-heading" class="section-title" itemprop="name">Vad vi gör</h2>
-                <p class="section-intro">Bryssel hjälper företag i alla branscher att skapa meningsfulla möten – från produktlanseringar och jubileum till turnéer, invigningar, konferenser och kick-offs.</p>
+                <h2 id="tjanster-heading" class="section-title" itemprop="name" data-i18n="services.title">Vad vi gör</h2>
+                <p class="section-intro" data-i18n="services.intro">Bryssel hjälper företag i alla branscher att skapa meningsfulla möten – från produktlanseringar och jubileum till turnéer, invigningar, konferenser och kick-offs.</p>
                 
                 <div class="services-visual">
                     <div class="service-visual-item" data-service="konferenser" role="button" tabindex="0" aria-label="Läs mer om Konferenser & Mässor">
@@ -552,9 +571,9 @@
                             <img src="public/Bryssel_media/Bilder tom 2 dec/cs3sthlm-3568.jpg" alt="Konferenser">
                         </div>
                         <div class="service-content">
-                            <h3>Konferenser & Mässor</h3>
-                            <p>Professionellt, snyggt och alltid med en twist. Vi tar hand om allt från lokal och teknik till talare och underhållning.</p>
-                            <span class="service-cta">Läs mer →</span>
+                            <h3 data-i18n="services.conferences.title">Konferenser & Mässor</h3>
+                            <p data-i18n="services.conferences.desc">Professionellt, snyggt och alltid med en twist. Vi tar hand om allt från lokal och teknik till talare och underhållning.</p>
+                            <span class="service-cta" data-i18n="services.conferences.cta">Läs mer →</span>
                         </div>
                     </div>
                     <div class="service-visual-item reverse" data-service="lanseringar" role="button" tabindex="0" aria-label="Läs mer om Lanseringar & Invigningar">
@@ -562,9 +581,9 @@
                             <img src="public/Bryssel_media/Bilder tom 2 dec/ga_sailracing_opening_clubhouse2014_1.jpg" alt="Lanseringar">
                         </div>
                         <div class="service-content">
-                            <h3>Lanseringar & Invigningar</h3>
-                            <p>När något nytt ska möta världen ska det kännas på riktigt. Vi skapar event som får din produkt eller tjänst att sticka ut.</p>
-                            <span class="service-cta">Läs mer →</span>
+                            <h3 data-i18n="services.launches.title">Lanseringar & Invigningar</h3>
+                            <p data-i18n="services.launches.desc">När något nytt ska möta världen ska det kännas på riktigt. Vi skapar event som får din produkt eller tjänst att sticka ut.</p>
+                            <span class="service-cta" data-i18n="services.launches.cta">Läs mer →</span>
                         </div>
                     </div>
                     <div class="service-visual-item" data-service="jubileum" role="button" tabindex="0" aria-label="Läs mer om Jubileum & Firanden">
@@ -572,9 +591,9 @@
                             <img src="public/Bryssel_media/Bilder tom 2 dec/Bingolotto25år4.JPG" alt="Jubileum">
                         </div>
                         <div class="service-content">
-                            <h3>Jubileum & Firanden</h3>
-                            <p>Ett jubileum är mer än bara en fest – det är en möjlighet att bygga vidare på företagets historia och blicka mot framtiden.</p>
-                            <span class="service-cta">Läs mer →</span>
+                            <h3 data-i18n="services.anniversaries.title">Jubileum & Firanden</h3>
+                            <p data-i18n="services.anniversaries.desc">Ett jubileum är mer än bara en fest – det är en möjlighet att bygga vidare på företagets historia och blicka mot framtiden.</p>
+                            <span class="service-cta" data-i18n="services.anniversaries.cta">Läs mer →</span>
                         </div>
                     </div>
                     <div class="service-visual-item reverse" data-service="turneer" role="button" tabindex="0" aria-label="Läs mer om Turnéer & Roadshows">
@@ -582,9 +601,9 @@
                             <img src="public/Bryssel_media/Bilder tom 2 dec/Hamburg on tour48.jpg" alt="Turnéer">
                         </div>
                         <div class="service-content">
-                            <h3>Turnéer & Roadshows</h3>
-                            <p>Vi tar ditt varumärke ut på vägarna, med genomarbetad logistik och storytelling som engagerar publik över hela landet.</p>
-                            <span class="service-cta">Läs mer →</span>
+                            <h3 data-i18n="services.tours.title">Turnéer & Roadshows</h3>
+                            <p data-i18n="services.tours.desc">Vi tar ditt varumärke ut på vägarna, med genomarbetad logistik och storytelling som engagerar publik över hela landet.</p>
+                            <span class="service-cta" data-i18n="services.tours.cta">Läs mer →</span>
                         </div>
                     </div>
                 </div>
@@ -596,9 +615,9 @@
             <div class="container">
                 <div class="mission-grid">
                     <div class="mission-content">
-                        <h2 class="section-title text-left">Mission</h2>
-                        <p class="lead">Vi stärker varumärken, underhåller publik, bygger relationer och driver försäljning genom unika upplevelser.</p>
-                        <p>Genom att skapa minnesvärda event som engagerar och inspirerar hjälper vi våra kunder att nå sina mål. Varje upplevelse vi producerar blir en story som folk pratar om och som skapar positiva resultat för våra kunder.</p>
+                        <h2 class="section-title text-left" data-i18n="mission.title">Mission</h2>
+                        <p class="lead" data-i18n="mission.lead">Vi stärker varumärken, underhåller publik, bygger relationer och driver försäljning genom unika upplevelser.</p>
+                        <p data-i18n="mission.text">Genom att skapa minnesvärda event som engagerar och inspirerar hjälper vi våra kunder att nå sina mål. Varje upplevelse vi producerar blir en story som folk pratar om och som skapar positiva resultat för våra kunder.</p>
                     </div>
                     <div class="mission-image">
                         <img src="public/Bryssel_media/Bilder tom 2 dec/ga_white60_ny_6.jpg" alt="Bryssel event">
@@ -615,30 +634,30 @@
         <!-- Värderingar -->
         <section id="varderingar" class="section">
             <div class="container">
-                <h2 class="section-title">Våra värderingar</h2>
+                <h2 class="section-title" data-i18n="values.title">Våra värderingar</h2>
                 
                 <div class="core-values">
                     <div class="values-grid">
                         <div class="value-item">
-                            <h3>Kreativitet & mod</h3>
-                            <p>Vi är nytänkande och vågar utmana det traditionella för att skapa unika lösningar. Rebellisk kreativitet genomsyrar vårt arbete.</p>
+                            <h3 data-i18n="values.creativity.title">Kreativitet & mod</h3>
+                            <p data-i18n="values.creativity.desc">Vi är nytänkande och vågar utmana det traditionella för att skapa unika lösningar. Rebellisk kreativitet genomsyrar vårt arbete.</p>
                         </div>
                         <div class="value-item">
-                            <h3>Professionalism</h3>
-                            <p>Trots vår lekfulla attityd är vi seriösa i leveransen. Vi är pålitliga, förberedda och kvalitetsmedvetna i varje detalj.</p>
+                            <h3 data-i18n="values.professionalism.title">Professionalism</h3>
+                            <p data-i18n="values.professionalism.desc">Trots vår lekfulla attityd är vi seriösa i leveransen. Vi är pålitliga, förberedda och kvalitetsmedvetna i varje detalj.</p>
                         </div>
                         <div class="value-item">
-                            <h3>Engagemang</h3>
-                            <p>Vi brinner för det vi gör och går helhjärtat in i varje projekt. Att skapa engagerande upplevelser är centralt.</p>
+                            <h3 data-i18n="values.engagement.title">Engagemang</h3>
+                            <p data-i18n="values.engagement.desc">Vi brinner för det vi gör och går helhjärtat in i varje projekt. Att skapa engagerande upplevelser är centralt.</p>
                         </div>
                         <div class="value-item">
-                            <h3>Resultatfokus</h3>
-                            <p>Varje event ska göra skillnad. Vi har alltid kundens mål i sikte och mäter framgång i effekten hos publiken.</p>
+                            <h3 data-i18n="values.results.title">Resultatfokus</h3>
+                            <p data-i18n="values.results.desc">Varje event ska göra skillnad. Vi har alltid kundens mål i sikte och mäter framgång i effekten hos publiken.</p>
                         </div>
                     </div>
                 </div>
 
-                <p class="quote">"Ballongmetaforen" – vi håller varandra och våra idéer svävande, men alltid med fötterna kvar på jorden.</p>
+                <p class="quote" data-i18n="values.quote">"Ballongmetaforen" – vi håller varandra och våra idéer svävande, men alltid med fötterna kvar på jorden.</p>
             </div>
         </section>
 
@@ -650,9 +669,9 @@
                         <img src="public/Bryssel_media/Bilder tom 2 dec/ga_radriver_inv_ny_6.JPG" alt="Vision">
                     </div>
                     <div class="vision-content">
-                        <h2 class="section-title text-left">Vision</h2>
-                        <p class="lead">Att bli det självklara valet för företag som vill förvandla sina event till oförglömliga upplevelser och berättelser.</p>
-                        <p>Vi strävar efter att förändra sättet varumärken och publik möts genom kreativa event som folk minns och pratar om långt efter att strålkastarna slocknat.</p>
+                        <h2 class="section-title text-left" data-i18n="vision.title">Vision</h2>
+                        <p class="lead" data-i18n="vision.lead">Att bli det självklara valet för företag som vill förvandla sina event till oförglömliga upplevelser och berättelser.</p>
+                        <p data-i18n="vision.text">Vi strävar efter att förändra sättet varumärken och publik möts genom kreativa event som folk minns och pratar om långt efter att strålkastarna slocknat.</p>
                     </div>
                 </div>
             </div>
@@ -679,91 +698,91 @@
         <!-- FAQ Section -->
         <section id="faq" class="section section-alt" aria-labelledby="faq-heading" itemscope itemtype="https://schema.org/FAQPage">
             <div class="container">
-                <h2 id="faq-heading" class="section-title">Vanliga frågor</h2>
-                <p class="section-intro">Här hittar du svar på de vanligaste frågorna om våra tjänster och hur vi arbetar.</p>
+                <h2 id="faq-heading" class="section-title" data-i18n="faq.title">Vanliga frågor</h2>
+                <p class="section-intro" data-i18n="faq.intro">Här hittar du svar på de vanligaste frågorna om våra tjänster och hur vi arbetar.</p>
                 
                 <div class="faq-container">
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Vilka typer av event producerar ni?</span>
+                            <span data-i18n="faq.q1">Vilka typer av event producerar ni?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Vi arbetar med ett brett spektrum av evenemang – från konferenser, jubileum och utställningar till produktlanseringar, roadshows och kick-offs. Oavsett storlek eller bransch skräddarsyr vi upplevelser som stärker varumärken och bygger relationer. Vi har bland annat producerat event för Volvo Group, Volkswagen, Sail Racing och MTV World Stage.</p>
+                            <p data-i18n="faq.a1">Vi arbetar med ett brett spektrum av evenemang – från konferenser, jubileum och utställningar till produktlanseringar, roadshows och kick-offs. Oavsett storlek eller bransch skräddarsyr vi upplevelser som stärker varumärken och bygger relationer. Vi har bland annat producerat event för Volvo Group, Volkswagen, Sail Racing och MTV World Stage.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Hur långt i förväg bör vi kontakta er?</span>
+                            <span data-i18n="faq.q2">Hur långt i förväg bör vi kontakta er?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Ju tidigare desto bättre! För större event rekommenderar vi minst 3-6 månader, men vi har även erfarenhet av att leverera fantastiska upplevelser med kortare ledtid. Kontakta oss så snart ni har en idé – vi hjälper er att planera tidslinjenn.</p>
+                            <p data-i18n="faq.a2">Ju tidigare desto bättre! För större event rekommenderar vi minst 3-6 månader, men vi har även erfarenhet av att leverera fantastiska upplevelser med kortare ledtid. Kontakta oss så snart ni har en idé – vi hjälper er att planera tidslinjenn.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Vad kostar det att anlita Bryssel?</span>
+                            <span data-i18n="faq.q3">Vad kostar det att anlita Bryssel?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Varje projekt är unikt och vi skräddarsyr alltid våra offerter baserat på era specifika behov och mål. Vi debiterar inte i onödan, men vi levererar alltid mer värde än du förväntar dig. Kontakta oss för en kostnadsfri konsultation där vi diskuterar ert projekt och ger en uppskattning.</p>
+                            <p data-i18n="faq.a3">Varje projekt är unikt och vi skräddarsyr alltid våra offerter baserat på era specifika behov och mål. Vi debiterar inte i onödan, men vi levererar alltid mer värde än du förväntar dig. Kontakta oss för en kostnadsfri konsultation där vi diskuterar ert projekt och ger en uppskattning.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Arbetar ni bara i Göteborg?</span>
+                            <span data-i18n="faq.q4">Arbetar ni bara i Göteborg?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Nej, vi arbetar över hela Sverige och internationellt! Vi har vårt kontor på Kungstorget i Göteborg, men vi producerar event var våra kunder behöver oss – från Stockholm till Paris. Hamburg on Tour är ett exempel på ett internationellt projekt vi genomfört.</p>
+                            <p data-i18n="faq.a4">Nej, vi arbetar över hela Sverige och internationellt! Vi har vårt kontor på Kungstorget i Göteborg, men vi producerar event var våra kunder behöver oss – från Stockholm till Paris. Hamburg on Tour är ett exempel på ett internationellt projekt vi genomfört.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Vad ingår i er eventproduktion?</span>
+                            <span data-i18n="faq.q5">Vad ingår i er eventproduktion?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Vi tar ansvar för hela kedjan: idé och koncept, planering, logistik, teknisk produktion, innehåll och leverans. Det kan inkludera allt från lokalbokningar och scenografi till ljud, ljus, underhållning och catering. Vår styrka är att ni får en partner som hanterar helheten – så att ni kan fokusera på ert kärnuppdrag.</p>
+                            <p data-i18n="faq.a5">Vi tar ansvar för hela kedjan: idé och koncept, planering, logistik, teknisk produktion, innehåll och leverans. Det kan inkludera allt från lokalbokningar och scenografi till ljud, ljus, underhållning och catering. Vår styrka är att ni får en partner som hanterar helheten – så att ni kan fokusera på ert kärnuppdrag.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Kan ni hjälpa till med enbart delar av ett event?</span>
+                            <span data-i18n="faq.q6">Kan ni hjälpa till med enbart delar av ett event?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Absolut! Vi är flexibla och anpassar oss efter era behov. Vi kan ta hand om hela produktionen eller fungera som konsultativt stöd för specifika delar – till exempel kreativ utveckling, teknisk produktion eller projektledning. Vi är lika delar strategiska rådgivare som passionerade doers.</p>
+                            <p data-i18n="faq.a6">Absolut! Vi är flexibla och anpassar oss efter era behov. Vi kan ta hand om hela produktionen eller fungera som konsultativt stöd för specifika delar – till exempel kreativ utveckling, teknisk produktion eller projektledning. Vi är lika delar strategiska rådgivare som passionerade doers.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question" aria-expanded="false">
-                            <span>Hur säkerställer ni att eventet blir lyckat?</span>
+                            <span data-i18n="faq.q7">Hur säkerställer ni att eventet blir lyckat?</span>
                             <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M6 9l6 6 6-6"/>
                             </svg>
                         </button>
                         <div class="faq-answer">
-                            <p>Vi börjar alltid med att förstå era mål och målgrupp. Genom noggrann planering, kreativt tänkande och professionell leverans säkerställer vi att varje detalj bidrar till helheten. Vi mäter framgång inte bara i kronor, utan i känslan efteråt – hos både publik, kund och team. Vår erfarenhet och fingertoppskänsla lyfter helheten.</p>
+                            <p data-i18n="faq.a7">Vi börjar alltid med att förstå era mål och målgrupp. Genom noggrann planering, kreativt tänkande och professionell leverans säkerställer vi att varje detalj bidrar till helheten. Vi mäter framgång inte bara i kronor, utan i känslan efteråt – hos både publik, kund och team. Vår erfarenhet och fingertoppskänsla lyfter helheten.</p>
                         </div>
                     </div>
                 </div>
@@ -774,9 +793,9 @@
         <section class="section section-cta" aria-labelledby="generator-heading">
             <div class="container">
                 <div class="cta-content">
-                    <h2 id="generator-heading" class="cta-title">Få din unika event-idé</h2>
-                    <p class="cta-text">Berätta lite om vad du letar efter så skapar vår AI ett skräddarsytt event-koncept åt dig. Kostnadsfritt och utan förpliktelser.</p>
-                    <button class="event-generator-trigger" data-event-generator>Skapa min event-idé</button>
+                    <h2 id="generator-heading" class="cta-title" data-i18n="cta.title">Få din unika event-idé</h2>
+                    <p class="cta-text" data-i18n="cta.text">Berätta lite om vad du letar efter så skapar vår AI ett skräddarsytt event-koncept åt dig. Kostnadsfritt och utan förpliktelser.</p>
+                    <button class="event-generator-trigger" data-event-generator data-i18n="cta.button">Skapa min event-idé</button>
                 </div>
             </div>
         </section>
@@ -784,7 +803,7 @@
         <!-- Kontakt -->
         <section id="kontakt" class="section" aria-labelledby="kontakt-heading">
             <div class="container">
-                <h2 id="kontakt-heading" class="section-title">Kontakt</h2>
+                <h2 id="kontakt-heading" class="section-title" data-i18n="contact.title">Kontakt</h2>
                 <div class="contact-grid" itemscope itemtype="https://schema.org/Organization">
                     <div class="contact-info-block">
                         <p class="contact-name" itemprop="name">We Are Bryssel AB</p>
@@ -796,9 +815,9 @@
                         <p><a href="https://wearebryssel.se" itemprop="url" aria-label="Besök vår webbplats">www.wearebryssel.se</a></p>
                     </div>
                     <div class="contact-cta">
-                        <h3>Vill du veta mer?</h3>
-                        <p>Kontakta oss för att skapa något oförglömligt tillsammans.</p>
-                        <a href="mailto:info@wearebryssel.se" class="contact-button" role="button" aria-label="Skicka förfrågan via e-post">Kontakta oss</a>
+                        <h3 data-i18n="contact.more">Vill du veta mer?</h3>
+                        <p data-i18n="contact.cta.text">Kontakta oss för att skapa något oförglömligt tillsammans.</p>
+                        <a href="mailto:info@wearebryssel.se" class="contact-button" role="button" aria-label="Skicka förfrågan via e-post" data-i18n="contact.button">Kontakta oss</a>
                     </div>
                 </div>
             </div>
@@ -809,7 +828,7 @@
         <div class="container">
             <div class="footer-content">
                 <img src="public/Bryssel_media/Bryssel_liggande/Bryssel liggande transparent.png" alt="Bryssel logotyp" class="footer-logo" itemprop="logo">
-                <p>&copy; <time datetime="2024">2024</time> <span itemprop="legalName">We Are Bryssel AB</span>. Alla rättigheter förbehållna.</p>
+                <p>&copy; <time datetime="2024">2024</time> <span itemprop="legalName">We Are Bryssel AB</span>. <span data-i18n="footer.rights">Alla rättigheter förbehållna.</span></p>
                 <address class="footer-address" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                     <span itemprop="streetAddress">Kungstorget 11</span>, 
                     <span itemprop="postalCode">411 10</span> 
@@ -818,11 +837,11 @@
                 </address>
                 <nav class="footer-nav" aria-label="Footer-navigering">
                     <ul>
-                        <li><a href="#om">Om oss</a></li>
-                        <li><a href="#vad-vi-gor">Tjänster</a></li>
-                        <li><a href="#case">Case</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#kontakt">Kontakt</a></li>
+                        <li><a href="#om" data-i18n="nav.about">Om oss</a></li>
+                        <li><a href="#vad-vi-gor" data-i18n="nav.services">Tjänster</a></li>
+                        <li><a href="#case" data-i18n="nav.case">Case</a></li>
+                        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                        <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
                     </ul>
                 </nav>
                 <div class="footer-contact">
@@ -845,17 +864,18 @@
                     <p id="service-modal-description" class="service-modal-desc"></p>
                     <ul id="service-modal-features" class="service-modal-features"></ul>
                     <div class="service-modal-recommendation">
-                        <p>Vill du veta mer om hur vi kan hjälpa dig? Vi skräddarsyr alltid våra lösningar efter dina unika behov och mål.</p>
+                        <p data-i18n="modal.recommendation">Vill du veta mer om hur vi kan hjälpa dig? Vi skräddarsyr alltid våra lösningar efter dina unika behov och mål.</p>
                     </div>
                     <div class="service-modal-actions">
-                        <a href="#kontakt" class="service-modal-btn primary" id="service-contact-btn">Kontakta oss</a>
-                        <button class="service-modal-btn secondary" id="service-idea-btn">Få en event-idé</button>
+                        <a href="#kontakt" class="service-modal-btn primary" id="service-contact-btn" data-i18n="modal.contact">Kontakta oss</a>
+                        <button class="service-modal-btn secondary" id="service-idea-btn" data-i18n="modal.idea">Få en event-idé</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
     <script src="ChatWidget.js"></script>
     <script src="EventGenerator.js"></script>
