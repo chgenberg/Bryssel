@@ -332,11 +332,16 @@ class EventGenerator {
                         <h3>Wow-faktor</h3>
                         <p>${this.generatedIdea.wowFactor}</p>
                     </div>
+                    
+                    <div class="result-section result-recommendation">
+                        <h3>Vår rekommendation</h3>
+                        <p>${this.generatedIdea.recommendation || 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision.'}</p>
+                    </div>
                 </div>
                 
                 <div class="result-actions">
-                    <button class="action-btn primary" id="downloadPdf">Ladda ner som PDF</button>
-                    <button class="action-btn secondary" id="contactUs">Kontakta oss för offert</button>
+                    <button class="action-btn primary" id="contactUs">Kontakta oss för en komplett rekommendation</button>
+                    <button class="action-btn secondary" id="downloadPdf">Ladda ner som PDF</button>
                 </div>
                 
                 <p class="result-note">En kopia har skickats till ${this.userEmail}</p>
@@ -521,7 +526,8 @@ class EventGenerator {
                 'Överraskande inslag mitt i programmet',
                 'Minnesvärt avslut som gästerna tar med sig hem'
             ],
-            wowFactor: 'En oväntad upplevelse som knyter an till ert varumärke och som gästerna kommer prata om långt efter eventet är över.'
+            wowFactor: 'En oväntad upplevelse som knyter an till ert varumärke och som gästerna kommer prata om långt efter eventet är över.',
+            recommendation: 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision. Vi ser fram emot att höra från er!'
         };
     }
 
@@ -780,9 +786,14 @@ class EventGenerator {
             <p>${idea.wowFactor}</p>
         </div>
         
+        <div class="pdf-section pdf-recommendation">
+            <h2>Vår rekommendation</h2>
+            <p>${idea.recommendation || 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision.'}</p>
+        </div>
+        
         <div class="pdf-cta">
             <p>Redo att förverkliga denna idé?</p>
-            <p class="cta-text">Kontakta oss för en kostnadsfri konsultation</p>
+            <p class="cta-text">Kontakta oss för en komplett och djupgående personlig rekommendation</p>
         </div>
         
         <div class="pdf-footer">

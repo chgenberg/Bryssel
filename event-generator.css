@@ -344,6 +344,22 @@
     color: #333333;
 }
 
+.result-recommendation {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #a6894f;
+    margin-top: 24px;
+}
+
+.result-recommendation h3 {
+    color: #000000;
+}
+
+.result-recommendation p {
+    font-weight: 400;
+}
+
 .concept-name {
     font-size: 22px;
     font-weight: 700;

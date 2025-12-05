@@ -208,7 +208,8 @@ Svara i exakt detta JSON-format (och ENDAST JSON, ingen annan text):
         "Tredje nyckelmoment",
         "Fjärde nyckelmoment"
     ],
-    "wowFactor": "En mening som beskriver det oväntade elementet som gör eventet minnesvärt"
+    "wowFactor": "En mening som beskriver det oväntade elementet som gör eventet minnesvärt",
+    "recommendation": "En personlig uppmaning att kontakta Bryssel för att få en komplett och djupgående rekommendation anpassad efter just deras behov. Nämn att detta är en smakprov och att vi kan göra mycket mer tillsammans."
 }
 
 Var kreativ, specifik och anpassa idén till branschen och syftet. Undvik generiska förslag.`;
@@ -285,7 +286,8 @@ function generateFallbackIdea(industry, purpose, guests, budget, feeling) {
             'Interaktivt segment där gästerna blir delaktiga i upplevelsen',
             'Avslutning som ger gästerna något konkret att ta med sig hem'
         ],
-        wowFactor: `Ett oväntat element som knyter an till ${industry}-branschens unika karaktär och som gästerna kommer prata om långt efter eventet.`
+        wowFactor: `Ett oväntat element som knyter an till ${industry}-branschens unika karaktär och som gästerna kommer prata om långt efter eventet.`,
+        recommendation: 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision. Vi ser fram emot att höra från er!'
     };
 }
 
