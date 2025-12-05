@@ -172,6 +172,123 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
+// Event Idea Generator endpoint
+app.post('/api/generate-event-idea', async (req, res) => {
+    try {
+        const { email, industry, purpose, guests, budget, feeling } = req.body;
+
+        if (!email || !industry || !purpose) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        if (!process.env.OPENAI_API_KEY) {
+            // Return fallback idea if no API key
+            return res.json({
+                idea: generateFallbackIdea(industry, purpose, guests, budget, feeling)
+            });
+        }
+
+        const prompt = `Du är en kreativ eventplanerare på Bryssel, en av Sveriges mest innovativa eventbyråer.
+
+Baserat på följande information, skapa ett unikt och kreativt event-koncept:
+
+- Bransch: ${industry}
+- Syfte: ${purpose}
+- Antal gäster: ${guests}
+- Budget: ${budget}
+- Önskad känsla: ${feeling ? feeling.join(', ') : 'Inte specificerad'}
+
+Svara i exakt detta JSON-format (och ENDAST JSON, ingen annan text):
+{
+    "conceptName": "Ett kreativt och fängslande namn på konceptet",
+    "description": "En beskrivande text på 2-3 meningar som förklarar konceptet och hur det möter kundens behov",
+    "keyMoments": [
+        "Första nyckelmoment",
+        "Andra nyckelmoment",
+        "Tredje nyckelmoment",
+        "Fjärde nyckelmoment"
+    ],
+    "wowFactor": "En mening som beskriver det oväntade elementet som gör eventet minnesvärt"
+}
+
+Var kreativ, specifik och anpassa idén till branschen och syftet. Undvik generiska förslag.`;
+
+        const completion = await openai.chat.completions.create({
+            model: 'gpt-4o-mini',
+            messages: [
+                { role: 'system', content: 'Du är en kreativ eventplanerare. Svara alltid med giltig JSON.' },
+                { role: 'user', content: prompt }
+            ],
+            max_tokens: 800,
+            temperature: 0.9,
+        });
+
+        let ideaText = completion.choices[0].message.content;
+        
+        // Clean up the response to ensure valid JSON
+        ideaText = ideaText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        
+        try {
+            const idea = JSON.parse(ideaText);
+            res.json({ idea });
+        } catch (parseError) {
+            console.error('JSON parse error:', parseError);
+            res.json({
+                idea: generateFallbackIdea(industry, purpose, guests, budget, feeling)
+            });
+        }
+
+    } catch (error) {
+        console.error('Event Idea Generation Error:', error);
+        res.json({
+            idea: generateFallbackIdea(
+                req.body.industry,
+                req.body.purpose,
+                req.body.guests,
+                req.body.budget,
+                req.body.feeling
+            )
+        });
+    }
+});
+
+// Fallback idea generator
+function generateFallbackIdea(industry, purpose, guests, budget, feeling) {
+    const concepts = {
+        'Produktlansering': {
+            name: 'The Reveal Experience',
+            description: `En dramatisk produktlansering designad för ${industry}-branschen där varje detalj bygger upp till det stora avslöjandet. Konceptet kombinerar storytelling med interaktiva element för att skapa maximal effekt.`
+        },
+        'Jubileum / Firande': {
+            name: 'Legacy & Future',
+            description: `Ett jubileumsfirande som hedrar det förflutna samtidigt som det blickar framåt. Genom att väva samman företagets historia med framtidsvisioner skapar vi en känslomässig och minnesvärd upplevelse.`
+        },
+        'Konferens / Seminarium': {
+            name: 'The Knowledge Arena',
+            description: `En konferensupplevelse som bryter mot det traditionella formatet. Med interaktiva sessioner, oväntade miljöer och engagerande innehåll skapar vi ett event som deltagarna faktiskt minns.`
+        },
+        'Kick-off / Teambuilding': {
+            name: 'Team Momentum',
+            description: `En kick-off som bygger genuin teamkänsla och energi för året som kommer. Genom en mix av inspiration, utmaningar och firande skapar vi en upplevelse som stärker kulturen.`
+        }
+    };
+
+    const selected = concepts[purpose] || concepts['Konferens / Seminarium'];
+    const feelingText = feeling ? feeling.join(' och ').toLowerCase() : 'professionell och engagerande';
+
+    return {
+        conceptName: selected.name,
+        description: selected.description,
+        keyMoments: [
+            'Ankomstupplevelse som sätter tonen och överraskar gästerna direkt',
+            `Huvudmoment designat för att vara ${feelingText}`,
+            'Interaktivt segment där gästerna blir delaktiga i upplevelsen',
+            'Avslutning som ger gästerna något konkret att ta med sig hem'
+        ],
+        wowFactor: `Ett oväntat element som knyter an till ${industry}-branschens unika karaktär och som gästerna kommer prata om långt efter eventet.`
+    };
+}
+
 // Health check
 app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Bryssel Chat Server is running!' });
