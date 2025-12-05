@@ -11,23 +11,56 @@ if (scrollProgress && scrollProgressContainer) {
     });
 }
 
-// Mobile menu toggle
+// Hamburger menu toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
+const menuOverlay = document.querySelector('.menu-overlay');
 
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
+function toggleMenu() {
+    navToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+function closeMenu() {
+    navToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    // Close any open dropdowns
+    document.querySelectorAll('.has-dropdown.active').forEach(dropdown => {
+        dropdown.classList.remove('active');
     });
 }
 
-// Close menu when clicking on a link
-const navLinks = document.querySelectorAll('.nav-menu a');
+if (navToggle) {
+    navToggle.addEventListener('click', toggleMenu);
+}
+
+if (menuOverlay) {
+    menuOverlay.addEventListener('click', closeMenu);
+}
+
+// Close menu when clicking on a link (not dropdown toggle)
+const navLinks = document.querySelectorAll('.nav-menu > li:not(.has-dropdown) > a');
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
+    link.addEventListener('click', closeMenu);
+});
+
+// Close menu on dropdown link click
+const dropdownLinks = document.querySelectorAll('.dropdown a');
+dropdownLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
+
+// Dropdown toggle in hamburger menu
+const dropdownToggles = document.querySelectorAll('.has-dropdown > a');
+dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parent = toggle.parentElement;
+        parent.classList.toggle('active');
     });
 });
 
