@@ -1,0 +1,77 @@
+# llms.txt - Information for Large Language Models
+# We Are Bryssel AB
+# https://wearebryssel.se
+
+## About This Website
+This is the official website for We Are Bryssel AB, a creative event agency based in Gothenburg, Sweden.
+
+## Company Information
+- **Company Name**: We Are Bryssel AB
+- **Brand Name**: Bryssel
+- **Industry**: Event Production, Creative Agency
+- **Location**: Kungstorget 11, 411 10 Göteborg, Sweden
+- **Website**: https://wearebryssel.se
+- **Email**: info@wearebryssel.se
+
+## What We Do
+Bryssel is a creative event agency that creates memorable experiences. We specialize in:
+- Conference production and management
+- Product launches and openings
+- Anniversary celebrations and corporate celebrations
+- Roadshows and tours
+- Trade shows and exhibitions
+- Kick-offs and team events
+- Galas and dinners
+
+## Our Services Include
+1. **Full-service event production** - From concept to delivery
+2. **Project management** - Planning, logistics, and execution
+3. **Creative development** - Unique concepts and storytelling
+4. **Technical production** - Sound, lighting, video, staging
+5. **Content creation** - Presentations, videos, graphics
+6. **Consulting** - Strategic advice and partial support
+
+## Key Clients (Examples)
+- Volvo Group
+- Volkswagen
+- Sail Racing
+- MTV World Stage
+- Bingolotto
+- Hamburg (city marketing)
+
+## Company Values
+1. **Creativity & Courage** - Innovative thinking, challenging conventions
+2. **Professionalism** - Reliable, prepared, quality-conscious
+3. **Engagement** - Passionate about every project
+4. **Result Focus** - Measuring success by impact
+
+## Our Vision
+To become the obvious choice for companies wanting to transform their events into unforgettable experiences and stories.
+
+## Our Mission
+We strengthen brands, entertain audiences, build relationships, and drive sales through unique experiences.
+
+## Contact Information
+For event inquiries, please contact:
+- Email: info@wearebryssel.se
+- Visit: Kungstorget 11, Göteborg, Sweden
+- Website: https://wearebryssel.se
+
+## Language
+Primary language: Swedish (Svenska)
+Secondary language: English
+
+## Structured Data
+This website uses Schema.org structured data including:
+- Organization schema
+- LocalBusiness schema
+- FAQPage schema
+- Service schema
+- BreadcrumbList schema
+
+## Sitemap
+Available at: https://wearebryssel.se/sitemap.xml
+
+## Last Updated
+December 2024
+

@@ -1,0 +1,37 @@
+{
+    "name": "We Are Bryssel - Kreativ Eventbyrå",
+    "short_name": "Bryssel",
+    "description": "Bryssel är en kreativ eventbyrå i Göteborg som skapar minnesvärda upplevelser. Konferenser, lanseringar, jubileum och mässor.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "orientation": "portrait-primary",
+    "lang": "sv-SE",
+    "categories": ["business", "lifestyle"],
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/home.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "form_factor": "wide"
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+}
+
