@@ -102,7 +102,7 @@ class EventGenerator {
             {
                 id: 'generating',
                 title: 'Skapar din unika event-idé',
-                subtitle: 'Vår AI analyserar dina svar och skapar ett skräddarsytt koncept...',
+                subtitle: 'Vår agent analyserar dina svar och skapar ett skräddarsytt koncept...',
                 type: 'loading'
             },
             {
