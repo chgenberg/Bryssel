@@ -192,6 +192,22 @@
     border-bottom-left-radius: 0.25rem;
 }
 
+/* HTML formatting in bot messages */
+.chat-message.bot .message-content strong {
+    font-weight: 600;
+    color: #000000;
+}
+
+.chat-message.bot .message-content em {
+    font-style: italic;
+}
+
+.chat-message.bot .message-content br {
+    display: block;
+    content: "";
+    margin-top: 0.25rem;
+}
+
 .message-time {
     font-size: 0.75rem;
     color: #666666;

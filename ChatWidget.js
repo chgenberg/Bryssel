@@ -189,7 +189,7 @@ class ChatWidget {
     addWelcomeMessage() {
         const welcomeMsg = {
             type: 'bot',
-            content: 'Tjena! 👋 Jag är Bryssels AI-assistent – en riktig göteborgare som älskar event! Fråga mig vad som helst om våra tjänster, event i allmänhet, eller om du vill skapa något riktigt fett. Vad kan jag hjälpa dig med iansen?',
+            content: 'Tjena! 👋 Jag är <strong>Bryssels AI-assistent</strong> – en riktig göteborgare som älskar event!<br><br>Fråga mig vad som helst om våra tjänster, event i allmänhet, eller om du vill skapa något riktigt fett. Vad kan jag hjälpa dig med iansen?',
             time: new Date()
         };
         this.messages.push(welcomeMsg);
@@ -228,7 +228,7 @@ class ChatWidget {
             console.error('Chat error:', error);
             this.messages.push({
                 type: 'bot',
-                content: 'Oj, något gick snett där! Prova igen eller kontakta oss på info@wearebryssel.se så hjälper vi dig. 🙏',
+                content: 'Oj, något gick snett där! 🙏<br><br>Prova igen eller kontakta oss på <strong>info@wearebryssel.se</strong> så hjälper vi dig.',
                 time: new Date()
             });
         }
@@ -270,28 +270,28 @@ class ChatWidget {
     getLocalResponse(userInput) {
         const input = userInput.toLowerCase();
         
-        // Göteborgsk fallback responses
+        // Göteborgsk fallback responses med HTML-formatering
         if (input.includes('hej') || input.includes('hallå') || input.includes('tjena')) {
-            return 'Tjena gansen! 👋 Najs att du hör av dig! Jag kan hjälpa dig med allt som har med event att göra. Vad funderar du på?';
+            return 'Tjena gansen! 👋<br><br>Najs att du hör av dig! Jag kan hjälpa dig med allt som har med <strong>event</strong> att göra. Vad funderar du på?';
         }
         
         if (input.includes('event') || input.includes('fest') || input.includes('konferens')) {
-            return 'Åh, event va? Då snackar vi! 🎉 Det är ju det göttiga som finns! Vi på Bryssel fixar allt från läckra konferenser till feta lanseringar. Berätta mer om vad du har i kikaren!';
+            return 'Åh, event va? Då snackar vi! 🎉<br><br>Det är ju det göttiga som finns! Vi på <strong>Bryssel</strong> fixar allt från läckra konferenser till feta lanseringar.<br><br>Berätta mer om vad du har i kikaren!';
         }
         
         if (input.includes('pris') || input.includes('kosta')) {
-            return 'Priset beror helt på hur stort och fräckt event du vill ha! Vi skräddarsyr alltid, ingen copy-paste här inte. Hojta till på info@wearebryssel.se så tar vi en käk... eller ja, en offert! 😄';
+            return 'Priset beror helt på hur stort och fräckt event du vill ha!<br><br>Vi <strong>skräddarsyr alltid</strong>, ingen copy-paste här inte. Hojta till på <strong>info@wearebryssel.se</strong> så tar vi en käk... eller ja, en offert! 😄';
         }
         
         if (input.includes('göteborg') || input.includes('gbg')) {
-            return 'Göteborg! Bästa staden ansen! 💙🤍 Vi sitter på Kungstorget mitt i smeten. Perfekt läge för att fixa event i hela Västsverige... och resten av världen förstås!';
+            return '<strong>Göteborg!</strong> Bästa staden ansen! 💙🤍<br><br>Vi sitter på <strong>Kungstorget</strong> mitt i smeten. Perfekt läge för att fixa event i hela Västsverige... och resten av världen förstås!';
         }
         
         if (input.includes('kontakt') || input.includes('boka')) {
-            return 'Klart du ska höra av dig! Maila info@wearebryssel.se eller kom förbi kontoret på Kungstorget 11. Vi bjuder på kaffe! ☕';
+            return 'Klart du ska höra av dig!<br><br>• Maila <strong>info@wearebryssel.se</strong><br>• Kom förbi kontoret på <strong>Kungstorget 11</strong><br><br>Vi bjuder på kaffe! ☕';
         }
         
-        return 'Intressant fråga! 🤔 Men jag är mest insnöad på event och Bryssel-relaterade grejer. Har du nån fråga om det så är jag på! Annars kan du alltid maila oss på info@wearebryssel.se.';
+        return 'Intressant fråga! 🤔<br><br>Men jag är mest insnöad på <strong>event</strong> och <strong>Bryssel-relaterade</strong> grejer. Har du nån fråga om det så är jag på!<br><br>Annars kan du alltid maila oss på <strong>info@wearebryssel.se</strong>.';
     }
 
     showTypingIndicator() {
@@ -314,7 +314,13 @@ class ChatWidget {
             
             const contentEl = document.createElement('div');
             contentEl.className = 'message-content';
-            contentEl.textContent = msg.content;
+            
+            // Use innerHTML for bot messages to render HTML formatting, textContent for user messages (security)
+            if (msg.type === 'bot') {
+                contentEl.innerHTML = msg.content;
+            } else {
+                contentEl.textContent = msg.content;
+            }
             
             const timeEl = document.createElement('div');
             timeEl.className = 'message-time';
