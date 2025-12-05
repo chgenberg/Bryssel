@@ -547,40 +547,44 @@
                 <p class="section-intro">Bryssel hjälper företag i alla branscher att skapa meningsfulla möten – från produktlanseringar och jubileum till turnéer, invigningar, konferenser och kick-offs.</p>
                 
                 <div class="services-visual">
-                    <div class="service-visual-item">
+                    <div class="service-visual-item" data-service="konferenser" role="button" tabindex="0" aria-label="Läs mer om Konferenser & Mässor">
                         <div class="service-image">
                             <img src="public/Bryssel_media/Bilder tom 2 dec/cs3sthlm-3568.jpg" alt="Konferenser">
                         </div>
                         <div class="service-content">
                             <h3>Konferenser & Mässor</h3>
                             <p>Professionellt, snyggt och alltid med en twist. Vi tar hand om allt från lokal och teknik till talare och underhållning.</p>
+                            <span class="service-cta">Läs mer →</span>
                         </div>
                     </div>
-                    <div class="service-visual-item reverse">
+                    <div class="service-visual-item reverse" data-service="lanseringar" role="button" tabindex="0" aria-label="Läs mer om Lanseringar & Invigningar">
                         <div class="service-image">
                             <img src="public/Bryssel_media/Bilder tom 2 dec/ga_sailracing_opening_clubhouse2014_1.jpg" alt="Lanseringar">
                         </div>
                         <div class="service-content">
                             <h3>Lanseringar & Invigningar</h3>
                             <p>När något nytt ska möta världen ska det kännas på riktigt. Vi skapar event som får din produkt eller tjänst att sticka ut.</p>
+                            <span class="service-cta">Läs mer →</span>
                         </div>
                     </div>
-                    <div class="service-visual-item">
+                    <div class="service-visual-item" data-service="jubileum" role="button" tabindex="0" aria-label="Läs mer om Jubileum & Firanden">
                         <div class="service-image">
                             <img src="public/Bryssel_media/Bilder tom 2 dec/Bingolotto25år4.JPG" alt="Jubileum">
                         </div>
                         <div class="service-content">
                             <h3>Jubileum & Firanden</h3>
                             <p>Ett jubileum är mer än bara en fest – det är en möjlighet att bygga vidare på företagets historia och blicka mot framtiden.</p>
+                            <span class="service-cta">Läs mer →</span>
                         </div>
                     </div>
-                    <div class="service-visual-item reverse">
+                    <div class="service-visual-item reverse" data-service="turneer" role="button" tabindex="0" aria-label="Läs mer om Turnéer & Roadshows">
                         <div class="service-image">
                             <img src="public/Bryssel_media/Bilder tom 2 dec/Hamburg on tour48.jpg" alt="Turnéer">
                         </div>
                         <div class="service-content">
                             <h3>Turnéer & Roadshows</h3>
                             <p>Vi tar ditt varumärke ut på vägarna, med genomarbetad logistik och storytelling som engagerar publik över hela landet.</p>
+                            <span class="service-cta">Läs mer →</span>
                         </div>
                     </div>
                 </div>
@@ -828,9 +832,34 @@
         </div>
     </footer>
 
+    <!-- Service Modal -->
+    <div id="service-modal" class="service-modal-overlay" aria-hidden="true">
+        <div class="service-modal">
+            <button class="service-modal-close" aria-label="Stäng">&times;</button>
+            <div class="service-modal-content">
+                <div class="service-modal-image">
+                    <img id="service-modal-img" src="" alt="">
+                </div>
+                <div class="service-modal-text">
+                    <h2 id="service-modal-title"></h2>
+                    <p id="service-modal-description" class="service-modal-desc"></p>
+                    <ul id="service-modal-features" class="service-modal-features"></ul>
+                    <div class="service-modal-recommendation">
+                        <p>Vill du veta mer om hur vi kan hjälpa dig? Vi skräddarsyr alltid våra lösningar efter dina unika behov och mål.</p>
+                    </div>
+                    <div class="service-modal-actions">
+                        <a href="#kontakt" class="service-modal-btn primary" id="service-contact-btn">Kontakta oss</a>
+                        <button class="service-modal-btn secondary" id="service-idea-btn">Få en event-idé</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script src="ChatWidget.js"></script>
     <script src="EventGenerator.js"></script>
+    <script src="ServiceModal.js"></script>
 </body>
 </html>
 
