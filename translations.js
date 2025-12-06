@@ -531,7 +531,29 @@ let currentLanguage = localStorage.getItem('bryssel-lang') || 'sv';
 
 // Get translation by key
 function t(key) {
+    if (currentLanguage === 'gbg') {
+        const val = translations.gbg[key];
+        if (val) return val;
+        const svVal = translations.sv[key];
+        if (svVal) return gbgify(svVal);
+        return gbgify(key);
+    }
     return translations[currentLanguage][key] || translations['sv'][key] || key;
+}
+
+// Simple Göteborska flavor for fallback strings
+function gbgify(text) {
+    if (!text || typeof text !== 'string') return text;
+    let out = text;
+    // Light-touch dialect replacements
+    out = out.replace(/ och /gi, ' å ');
+    out = out.replace(/\binte\b/gi, 'ické');
+    out = out.replace(/\bmycket\b/gi, 'gôtt om');
+    // Add a friendly ending if not already present
+    if (!/gött|gôtt|gött mos/i.test(out)) {
+        out = `${out} (gött mos!)`;
+    }
+    return out;
 }
 
 // Update all translatable elements on the page
