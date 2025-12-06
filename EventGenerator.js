@@ -486,7 +486,7 @@ class EventGenerator {
     }
 
     generateFallbackIdea() {
-        const isSv = (typeof currentLanguage !== 'undefined') ? currentLanguage === 'sv' : true;
+        const isSv = (typeof currentLanguage !== 'undefined') ? (currentLanguage === 'sv' || currentLanguage === 'gbg') : true;
         const purpose = this.answers.purpose || (isSv ? 'Event' : 'Event');
         const feeling = this.answers.feeling || (isSv ? ['Professionell'] : ['Professional']);
         

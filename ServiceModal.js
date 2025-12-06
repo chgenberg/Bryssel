@@ -32,6 +32,20 @@ class ServiceModal {
                         'Interactive elements that engage attendees',
                         'Post-event documentation and follow-up'
                     ]
+                },
+                gbg: {
+                    title: 'Konferenser & Mässor (gôtt!)',
+                    description: 'Vi snickrar konferenser och mässor som är långt ifrån vanliga. Proffsigt, snyggt och alltid med en göttig twist som folk snackar om efteråt.',
+                    features: [
+                        'Projektledning från idé till mål – vi håller i trådarna',
+                        'Lokal och scenografi som passar ert gôa varumärke',
+                        'Teknik: ljud, ljus, video, streaming – rubbet',
+                        'Talare, moderatorer och underhållning som lyfter',
+                        'Catering och gästhantering på göteborgskt manér',
+                        'Montrar och utställningsdesign som sticker ut',
+                        'Interaktiva grejer som får folk att vara med',
+                        'Efterarbete med dokumentation och uppföljning'
+                    ]
                 }
             },
             lanseringar: {
@@ -62,6 +76,20 @@ class ServiceModal {
                         'Live streaming and social media activation',
                         'Impactful product presentations',
                         'Memorable giveaways and branded experiences'
+                    ]
+                },
+                gbg: {
+                    title: 'Lanseringar & Invigningar (goa grejer)',
+                    description: 'När nåt nytt ska ut i världen ska det kännas på riktigt. Vi bygger förväntan, levererar wow och ger produkten en premiär med extra gött tryck.',
+                    features: [
+                        'Strategi som maxar snack och synlighet',
+                        'Kreativa koncept som matchar er stil',
+                        'Dramatiska reveal-moment – pang på',
+                        'VIP-hantering och schysta gästlistor',
+                        'Press och medieackreditering fixad',
+                        'Livestream och sociala medie-aktivering',
+                        'Produktpresentationer som sätter sig',
+                        'Give-aways och upplevelser folk minns'
                     ]
                 }
             },
@@ -94,6 +122,20 @@ class ServiceModal {
                         'Themed environments and scenography',
                         'Surprise moments no one forgets'
                     ]
+                },
+                gbg: {
+                    title: 'Jubileum & Firanden (gôrpampigt)',
+                    description: 'Jubileum är mer än en fest – det är stolthet, historia och framtid. Vi skapar goa firanden som bygger kultur och minnen för livet.',
+                    features: [
+                        'Storytelling som lyfter er resa och milstolpar',
+                        'Koncept som känns som er – med göttig twist',
+                        'Personalfester som skapar stolthet och värme',
+                        'Kundevent som stärker banden',
+                        'Jubileumsfilm och dokumentation',
+                        'Underhållning och aktiviteter för alla',
+                        'Temamiljöer och scenografi med känsla',
+                        'Överraskningar ingen glömmer'
+                    ]
                 }
             },
             turneer: {
@@ -124,6 +166,20 @@ class ServiceModal {
                         'On-site staffing and training',
                         'Real-time reporting and results follow-up',
                         'Flexibility to adapt to local conditions'
+                    ]
+                },
+                gbg: {
+                    title: 'Turnéer & Roadshows (ut på vägarna)',
+                    description: 'Vi tar ert varumärke på rull – med go logistik, jämn kvalitet och lokal känsla så det landar fint överallt.',
+                    features: [
+                        'Nationell/internationell planering och logistik',
+                        'Skalbart koncept som funkar på flera ställen',
+                        'Lokal anpassning men samma goa varumärkeskänsla',
+                        'Mobila produktionsenheter och scenografi',
+                        'Samarbete med lokala partners och leverantörer',
+                        'Personal på plats och inskolning',
+                        'Realtidsrapportering och uppföljning',
+                        'Flexibelt för lokala förutsättningar'
                     ]
                 }
             }
@@ -219,7 +275,7 @@ class ServiceModal {
         const service = this.services[serviceKey];
         if (!service) return;
 
-        const lang = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en' : 'sv';
+        const lang = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en' : (currentLanguage === 'gbg' ? 'gbg' : 'sv');
         const data = service[lang] || service.sv;
 
         // Populate modal content

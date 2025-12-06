@@ -276,7 +276,8 @@ class ChatWidget {
     getLocalResponse(userInput) {
         const input = userInput.toLowerCase();
 
-        const isSv = (typeof currentLanguage !== 'undefined') ? currentLanguage === 'sv' : true;
+        const isSv = (typeof currentLanguage !== 'undefined') ? (currentLanguage === 'sv' || currentLanguage === 'gbg') : true;
+        const isGbg = (typeof currentLanguage !== 'undefined') ? currentLanguage === 'gbg' : false;
 
         const responsesSv = {
             hello: 'Tjena gansen! 👋<br><br>Najs att du hör av dig! Jag kan hjälpa dig med allt som har med <strong>event</strong> att göra. Vad funderar du på?',
@@ -285,6 +286,15 @@ class ChatWidget {
             gbg: '<strong>Göteborg!</strong> Bästa staden ansen! 💙🤍<br><br>Vi sitter på <strong>Kungstorget</strong> mitt i smeten. Perfekt läge för att fixa event i hela Västsverige... och resten av världen förstås!',
             contact: 'Klart du ska höra av dig!<br><br>• Maila <strong>info@wearebryssel.se</strong><br>• Kom förbi kontoret på <strong>Kungstorget 11</strong><br><br>Vi bjuder på kaffe! ☕',
             other: 'Intressant fråga! 🤔<br><br>Men jag är mest insnöad på <strong>event</strong> och <strong>Bryssel-relaterade</strong> grejer. Har du nån fråga om det så är jag på!<br><br>Annars kan du alltid maila oss på <strong>info@wearebryssel.se</strong>.'
+        };
+
+        const responsesGbg = {
+            hello: 'Tjenixen gôtt folk! 👋<br><br>Här är din goa eventgôbbe. Vad har du på hjärtat?',
+            event: 'Event säger du? Gött mos! 🎉<br><br>Vi fixar allt från stiliga konferenser till rejält feta lanseringar.<br><br>Berätta vad du vill hitta på så löser vi det bängens!',
+            price: 'Priset beror på hur maffigt du vill ha det!<br><br>Vi <strong>skräddarsyr alltid</strong>. Släng iväg ett mail till <strong>info@wearebryssel.se</strong> så snackar vi ihop oss.',
+            gbg: '<strong>Göteborg!</strong> Världens bästa stad! 💙🤍<br><br>Vi hänger på <strong>Kungstorget</strong>. Perfekt utgångspunkt för goa event i hela Västsverige – och resten av världen, såklart.',
+            contact: 'Lätt som en plätt!<br><br>• Maila <strong>info@wearebryssel.se</strong><br>• Eller sväng förbi <strong>Kungstorget 11</strong><br><br>Vi bjuder på en go kopp!',
+            other: 'Kul fråga! 🤔<br><br>Jag är mest inne på <strong>event</strong> och <strong>Bryssel</strong>-grejer. Har du nåt om det så kör!<br><br>Annars finns vi alltid på <strong>info@wearebryssel.se</strong>.'
         };
 
         const responsesEn = {
@@ -296,7 +306,7 @@ class ChatWidget {
             other: 'Interesting question! 🤔<br><br>I’m mainly focused on <strong>events</strong> and <strong>Bryssel-related</strong> topics. Got a question on that? I’m all ears!<br><br>Otherwise you can always email <strong>info@wearebryssel.se</strong>.'
         };
 
-        const r = isSv ? responsesSv : responsesEn;
+        const r = isSv ? (isGbg ? responsesGbg : responsesSv) : responsesEn;
 
         if (input.includes('hej') || input.includes('hallå') || input.includes('tjena') || input.includes('hello') || input.includes('hi')) {
             return r.hello;

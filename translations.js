@@ -415,6 +415,47 @@ const translations = {
     }
 };
 
+// Göteborgska (GBG) – baseras på svenska med lite gött snack
+translations.gbg = {
+    ...translations.sv,
+    "nav.start": "Start (gött!)",
+    "nav.about": "Om oss (gôtt folk)",
+    "hero.subtitle": "Upplevelser som känns – i magen, i hjärtat och i minnet. Gött mos!",
+    "hero.cta": "Få din goa event-idé",
+    "services.title": "Vad vi gör (på riktigt gött vis)",
+    "cta.title": "Få din goa event-idé",
+    "cta.text": "Berätta lite om vad du letar efter så snickrar vår AI ihop ett gött koncept. Kostar inget – bara go stämning.",
+    "cta.button": "Skapa min goa idé",
+
+    /* Chat */
+    "chat.button": "Tjôta",
+    "chat.subtitle": "Din goa göteborgsassistent 🦐",
+    "chat.input.placeholder": "Skriv ditt göttiga meddelande...",
+    "chat.common.title": "Vanliga göttiga frågor:",
+    "chat.common.q1": "Vad kostar ett event, typ?",
+    "chat.common.q2": "Vad fixar ni egentligen?",
+    "chat.common.q3": "Hur bokar jag ett möte, då?",
+    "chat.common.contact": "Ring mig (bildligt)",
+    "chat.welcome": "Tjenixen! 👋 Jag är <strong>Bryssels AI-assistent</strong> – en go gôbbe som älskar event!<br><br>Fråga om våra grejer, event i största allmänhet eller om du vill hitta på nåt riktigt fett. Vad kan jag hjälpa dig med, bängen?",
+    "chat.error": "Oops, nåt blev knas! 🙏<br><br>Testa igen eller hojta på <strong>info@wearebryssel.se</strong> så löser vi det. Gött!",
+    "chat.form.success.text": "Vi hör av oss strax. Gött mos! 🙌",
+
+    /* Event generator */
+    "gen.next": "Nästa (gött)",
+    "gen.prev": "Backa lite",
+    "gen.create": "Spotta ut min goa idé",
+    "gen.loading.text": "Analyserar dina göttiga svar...",
+    "gen.result.title": "Din Gôa Event-Idé",
+    "gen.result.actions.contact": "Hör av dig så fixar vi resten",
+    "gen.result.actions.download": "Ladda ner som PDF (gött att ha)",
+    "gen.result.recommendation": "Vår göttiga rekommendation",
+    "gen.result.note": "En go kopia har skickats till {email}",
+    "gen.validation.select": "Välj ett gött alternativ",
+    "gen.validation.multiselect": "Välj minst ett gött alternativ",
+    "gen.error.generic": "Aj då, nåt blev fel. Testa igen!",
+    "gen.fallback.recommendation": "Detta är bara en liten smakbit på vad vi kan fixa ihop! Hör av dig så tar vi fram en göttig och vass rekommendation anpassad efter er."
+};
+
 // Language management
 let currentLanguage = localStorage.getItem('bryssel-lang') || 'sv';
 
@@ -429,7 +470,7 @@ function updatePageLanguage(lang) {
     localStorage.setItem('bryssel-lang', lang);
     
     // Update HTML lang attribute
-    document.documentElement.lang = lang === 'sv' ? 'sv' : 'en';
+    document.documentElement.lang = lang === 'en' ? 'en' : 'sv';
     
     // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
