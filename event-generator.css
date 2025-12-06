@@ -501,3 +501,29 @@
     }
 }
 
+@media (max-width: 480px) {
+    .event-generator-content {
+        padding: 16px;
+    }
+
+    .event-generator-navigation {
+        padding: 14px 16px 22px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .nav-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .step-title {
+        font-size: 18px;
+    }
+
+    .step-subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+}
+
