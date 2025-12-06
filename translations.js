@@ -456,6 +456,76 @@ translations.gbg = {
     "gen.fallback.recommendation": "Detta är bara en liten smakbit på vad vi kan fixa ihop! Hör av dig så tar vi fram en göttig och vass rekommendation anpassad efter er."
 };
 
+// PDF / Result labels
+['sv','en','gbg'].forEach(lang => {
+    const map = {
+        sv: {
+            "pdf.title": "Event-Idé",
+            "pdf.subtitle": "Skräddarsydd för {email}",
+            "pdf.created": "Skapad: {date}",
+            "pdf.basedon": "Baserat på dina svar",
+            "pdf.field.industry": "Bransch:",
+            "pdf.field.purpose": "Syfte:",
+            "pdf.field.guests": "Antal gäster:",
+            "pdf.field.budget": "Budget:",
+            "pdf.field.feeling": "Känsla:",
+            "pdf.section.concept": "Koncept",
+            "pdf.section.description": "Beskrivning",
+            "pdf.section.keymoments": "Nyckelmoment",
+            "pdf.section.wow": "Wow-faktor",
+            "pdf.section.recommendation": "Vår rekommendation",
+            "pdf.cta.ready": "Redo att förverkliga denna idé?",
+            "pdf.cta.text": "Kontakta oss för en komplett och djupgående personlig rekommendation",
+            "pdf.footer.company": "We Are Bryssel AB",
+            "pdf.footer.address": "Kungstorget 11, 411 10 Göteborg",
+            "pdf.footer.contact": "info@wearebryssel.se | wearebryssel.se"
+        },
+        en: {
+            "pdf.title": "Event Idea",
+            "pdf.subtitle": "Tailored for {email}",
+            "pdf.created": "Created: {date}",
+            "pdf.basedon": "Based on your answers",
+            "pdf.field.industry": "Industry:",
+            "pdf.field.purpose": "Purpose:",
+            "pdf.field.guests": "Guests:",
+            "pdf.field.budget": "Budget:",
+            "pdf.field.feeling": "Feeling:",
+            "pdf.section.concept": "Concept",
+            "pdf.section.description": "Description",
+            "pdf.section.keymoments": "Key moments",
+            "pdf.section.wow": "Wow factor",
+            "pdf.section.recommendation": "Our recommendation",
+            "pdf.cta.ready": "Ready to make this happen?",
+            "pdf.cta.text": "Contact us for a complete and in-depth personal recommendation",
+            "pdf.footer.company": "We Are Bryssel AB",
+            "pdf.footer.address": "Kungstorget 11, 411 10 Gothenburg",
+            "pdf.footer.contact": "info@wearebryssel.se | wearebryssel.se"
+        },
+        gbg: {
+            "pdf.title": "Gôa Event-idén",
+            "pdf.subtitle": "Fixad för {email}",
+            "pdf.created": "Skapad: {date}",
+            "pdf.basedon": "Baserat på dina goa svar",
+            "pdf.field.industry": "Bransch:",
+            "pdf.field.purpose": "Syfte:",
+            "pdf.field.guests": "Gäster:",
+            "pdf.field.budget": "Budget:",
+            "pdf.field.feeling": "Känsla:",
+            "pdf.section.concept": "Koncept",
+            "pdf.section.description": "Beskrivning",
+            "pdf.section.keymoments": "Nyckelmoment",
+            "pdf.section.wow": "Wow-faktor",
+            "pdf.section.recommendation": "Vår göttiga rekommendation",
+            "pdf.cta.ready": "Redo att köra igång?",
+            "pdf.cta.text": "Hör av dig så tar vi fram en komplett och vass rekommendation",
+            "pdf.footer.company": "We Are Bryssel AB",
+            "pdf.footer.address": "Kungstorget 11, 411 10 Göteborg",
+            "pdf.footer.contact": "info@wearebryssel.se | wearebryssel.se"
+        }
+    }[lang];
+    Object.assign(translations[lang], map);
+});
+
 // Language management
 let currentLanguage = localStorage.getItem('bryssel-lang') || 'sv';
 

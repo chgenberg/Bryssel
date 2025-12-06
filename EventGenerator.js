@@ -154,6 +154,7 @@ class EventGenerator {
     }
 
     open() {
+        this.steps = this.buildSteps(); // rebuild in current language
         this.currentStep = 0;
         this.answers = {};
         this.generatedIdea = null;
@@ -487,8 +488,9 @@ class EventGenerator {
 
     generateFallbackIdea() {
         const isSv = (typeof currentLanguage !== 'undefined') ? (currentLanguage === 'sv' || currentLanguage === 'gbg') : true;
+        const isGbg = (typeof currentLanguage !== 'undefined') ? currentLanguage === 'gbg' : false;
         const purpose = this.answers.purpose || (isSv ? 'Event' : 'Event');
-        const feeling = this.answers.feeling || (isSv ? ['Professionell'] : ['Professional']);
+        const feeling = this.answers.feeling || (isSv ? (isGbg ? ['Gôtt'] : ['Professionell']) : ['Professional']);
         
         if (isSv) {
             return {
@@ -540,13 +542,13 @@ class EventGenerator {
         const locale = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en-GB' : 'sv-SE';
         const date = new Date().toLocaleDateString(locale);
         const langAttr = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en' : 'sv';
-        
+
         return `
 <!DOCTYPE html>
 <html lang="${langAttr}">
 <head>
     <meta charset="UTF-8">
-    <title>Event-Idé - We Are Bryssel</title>
+    <title>${this.t('pdf.title')} - We Are Bryssel</title>
     <style>
         @page {
             margin: 2cm;
@@ -735,61 +737,61 @@ class EventGenerator {
     <div class="pdf-container">
         <div class="pdf-header">
             <div class="pdf-logo">Bryssel</div>
-            <div class="pdf-date">Skapad: ${date}</div>
+            <div class="pdf-date">${this.t('pdf.created').replace('{date}', date)}</div>
         </div>
         
         <div class="pdf-title">
-            <h1>Din Event-Idé</h1>
-            <p>Skräddarsydd för ${this.userEmail}</p>
+            <h1>${this.t('pdf.title')}</h1>
+            <p>${this.t('pdf.subtitle').replace('{email}', this.userEmail)}</p>
         </div>
         
         <div class="pdf-input-summary">
-            <h3>Baserat på dina svar</h3>
+            <h3>${this.t('pdf.basedon')}</h3>
             <div class="input-grid">
-                <div class="input-item"><strong>Bransch:</strong> ${this.answers.industry || '-'}</div>
-                <div class="input-item"><strong>Syfte:</strong> ${this.answers.purpose || '-'}</div>
-                <div class="input-item"><strong>Antal gäster:</strong> ${this.answers.guests || '-'}</div>
-                <div class="input-item"><strong>Budget:</strong> ${this.answers.budget || '-'}</div>
-                <div class="input-item" style="grid-column: span 2;"><strong>Känsla:</strong> ${(this.answers.feeling || []).join(', ') || '-'}</div>
+                <div class="input-item"><strong>${this.t('pdf.field.industry')}</strong> ${this.answers.industry || '-'}</div>
+                <div class="input-item"><strong>${this.t('pdf.field.purpose')}</strong> ${this.answers.purpose || '-'}</div>
+                <div class="input-item"><strong>${this.t('pdf.field.guests')}</strong> ${this.answers.guests || '-'}</div>
+                <div class="input-item"><strong>${this.t('pdf.field.budget')}</strong> ${this.answers.budget || '-'}</div>
+                <div class="input-item" style="grid-column: span 2;"><strong>${this.t('pdf.field.feeling')}</strong> ${(this.answers.feeling || []).join(', ') || '-'}</div>
             </div>
         </div>
         
         <div class="pdf-section">
-            <h2>Koncept</h2>
+            <h2>${this.t('pdf.section.concept')}</h2>
             <p class="concept-name">${idea.conceptName}</p>
         </div>
         
         <div class="pdf-section">
-            <h2>Beskrivning</h2>
+            <h2>${this.t('pdf.section.description')}</h2>
             <p>${idea.description}</p>
         </div>
         
         <div class="pdf-section">
-            <h2>Nyckelmoment</h2>
+            <h2>${this.t('pdf.section.keymoments')}</h2>
             <ul class="moments-list">
                 ${idea.keyMoments.map(m => `<li>${m}</li>`).join('')}
             </ul>
         </div>
         
         <div class="pdf-section">
-            <h2>Wow-faktor</h2>
+            <h2>${this.t('pdf.section.wow')}</h2>
             <p>${idea.wowFactor}</p>
         </div>
         
         <div class="pdf-section pdf-recommendation">
-            <h2>Vår rekommendation</h2>
-            <p>${idea.recommendation || 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision.'}</p>
+            <h2>${this.t('pdf.section.recommendation')}</h2>
+            <p>${idea.recommendation || this.t('gen.fallback.recommendation')}</p>
         </div>
         
         <div class="pdf-cta">
-            <p>Redo att förverkliga denna idé?</p>
-            <p class="cta-text">Kontakta oss för en komplett och djupgående personlig rekommendation</p>
+            <p>${this.t('pdf.cta.ready')}</p>
+            <p class="cta-text">${this.t('pdf.cta.text')}</p>
         </div>
         
         <div class="pdf-footer">
-            <p class="contact">We Are Bryssel AB</p>
-            <p>Kungstorget 11, 411 10 Göteborg</p>
-            <p>info@wearebryssel.se | wearebryssel.se</p>
+            <p class="contact">${this.t('pdf.footer.company')}</p>
+            <p>${this.t('pdf.footer.address')}</p>
+            <p>${this.t('pdf.footer.contact')}</p>
         </div>
     </div>
 </body>
