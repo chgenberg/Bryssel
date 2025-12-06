@@ -7,113 +7,75 @@ class EventGenerator {
         this.userEmail = '';
         this.generatedIdea = null;
         this.isGenerating = false;
-        
-        this.steps = [
+
+        this.steps = this.buildSteps();
+        this.init();
+    }
+
+    t(key) {
+        return window.t ? window.t(key) : key;
+    }
+
+    buildSteps() {
+        return [
             {
                 id: 'email',
-                title: 'Få din unika event-idé',
-                subtitle: 'Fyll i din e-post för att komma igång. Du får resultatet skickat direkt till din inbox.',
+                title: this.t('gen.email.title'),
+                subtitle: this.t('gen.email.subtitle'),
                 fields: [
-                    { name: 'email', type: 'email', label: 'E-postadress', placeholder: 'din@epost.se', required: true },
-                    { name: 'consent', type: 'checkbox', label: 'Jag godkänner att We Are Bryssel sparar min e-postadress och kontaktar mig med information och erbjudanden. Läs vår <a href="integritetspolicy.html" target="_blank">integritetspolicy</a>.', required: true }
+                    { name: 'email', type: 'email', label: this.t('gen.email.label'), placeholder: this.t('gen.email.placeholder'), required: true },
+                    { name: 'consent', type: 'checkbox', label: this.t('gen.email.consent'), required: true }
                 ]
             },
             {
                 id: 'industry',
-                title: 'Vilken bransch är ni verksamma inom?',
-                subtitle: 'Detta hjälper oss skräddarsy idén efter er målgrupp.',
+                title: this.t('gen.industry.title'),
+                subtitle: this.t('gen.industry.subtitle'),
                 type: 'select',
-                options: [
-                    'Tech / IT',
-                    'Finans / Bank',
-                    'Fastighet / Bygg',
-                    'Industri / Tillverkning',
-                    'Retail / E-handel',
-                    'Life Science / Pharma',
-                    'Konsult / Juridik',
-                    'Media / Underhållning',
-                    'Offentlig sektor',
-                    'Annat'
-                ]
+                options: this.t('gen.industry.options')
             },
             {
                 id: 'purpose',
-                title: 'Vad är syftet med eventet?',
-                subtitle: 'Välj det alternativ som bäst beskriver ert mål.',
+                title: this.t('gen.purpose.title'),
+                subtitle: this.t('gen.purpose.subtitle'),
                 type: 'select',
-                options: [
-                    'Produktlansering',
-                    'Jubileum / Firande',
-                    'Konferens / Seminarium',
-                    'Kick-off / Teambuilding',
-                    'Kundträff / Nätverkande',
-                    'Mässa / Utställning',
-                    'Invigning / Grand Opening',
-                    'Gala / Middag',
-                    'Intern kommunikation',
-                    'Annat'
-                ]
+                options: this.t('gen.purpose.options')
             },
             {
                 id: 'guests',
-                title: 'Hur många gäster förväntar ni er?',
-                subtitle: 'En ungefärlig uppskattning räcker.',
+                title: this.t('gen.guests.title'),
+                subtitle: this.t('gen.guests.subtitle'),
                 type: 'select',
-                options: [
-                    'Under 50 personer',
-                    '50-100 personer',
-                    '100-250 personer',
-                    '250-500 personer',
-                    '500-1000 personer',
-                    'Över 1000 personer'
-                ]
+                options: this.t('gen.guests.options')
             },
             {
                 id: 'budget',
-                title: 'Vilken budgetram har ni?',
-                subtitle: 'Detta påverkar vilka element vi föreslår.',
+                title: this.t('gen.budget.title'),
+                subtitle: this.t('gen.budget.subtitle'),
                 type: 'select',
-                options: [
-                    'Under 100 000 kr',
-                    '100 000 - 300 000 kr',
-                    '300 000 - 500 000 kr',
-                    '500 000 - 1 000 000 kr',
-                    'Över 1 000 000 kr',
-                    'Ej fastställd ännu'
-                ]
+                options: this.t('gen.budget.options')
             },
             {
                 id: 'feeling',
-                title: 'Vilken känsla vill ni skapa?',
-                subtitle: 'Välj de ord som bäst beskriver den upplevelse ni vill förmedla.',
+                title: this.t('gen.feeling.title'),
+                subtitle: this.t('gen.feeling.subtitle'),
                 type: 'multiselect',
-                options: [
-                    'Professionell och seriös',
-                    'Innovativ och framåtblickande',
-                    'Varm och personlig',
-                    'Energisk och inspirerande',
-                    'Exklusiv och lyxig',
-                    'Lekfull och överraskande',
-                    'Hållbar och medveten',
-                    'Intim och genuin'
-                ],
+                options: this.t('gen.feeling.options'),
                 maxSelect: 3
             },
             {
                 id: 'generating',
-                title: 'Skapar din unika event-idé',
-                subtitle: 'Vår agent analyserar dina svar och skapar ett skräddarsytt koncept...',
+                title: this.t('gen.loading.title'),
+                subtitle: this.t('gen.loading.subtitle'),
                 type: 'loading'
             },
             {
                 id: 'result',
-                title: 'Din Event-Idé',
+                title: this.t('gen.result.title'),
                 subtitle: '',
                 type: 'result'
             }
         ];
-        
-        this.init();
     }
 
     init() {
@@ -126,7 +88,7 @@ class EventGenerator {
         this.overlay.className = 'event-generator-overlay';
         this.overlay.innerHTML = `
             <div class="event-generator-modal">
-                <button class="event-generator-close" aria-label="Stäng">
+                <button class="event-generator-close" aria-label="${this.t('gen.close')}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"></line>
                         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -137,7 +99,7 @@ class EventGenerator {
                     <div class="progress-bar">
                         <div class="progress-fill"></div>
                     </div>
-                    <span class="progress-text">Steg 1 av 6</span>
+                    <span class="progress-text"></span>
                 </div>
                 
                 <div class="event-generator-content">
@@ -145,8 +107,8 @@ class EventGenerator {
                 </div>
                 
                 <div class="event-generator-navigation">
-                    <button class="nav-btn nav-prev" style="visibility: hidden;">Tillbaka</button>
-                    <button class="nav-btn nav-next">Nästa</button>
+                    <button class="nav-btn nav-prev" style="visibility: hidden;">${this.t('gen.prev')}</button>
+                    <button class="nav-btn nav-next">${this.t('gen.next')}</button>
                 </div>
             </div>
         `;
@@ -174,6 +136,14 @@ class EventGenerator {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.overlay.classList.contains('active')) {
                 this.close();
+            }
+        });
+
+        document.addEventListener('languageChanged', () => {
+            this.steps = this.buildSteps();
+            this.applyTranslations();
+            if (this.overlay.classList.contains('active')) {
+                this.renderStep();
             }
         });
         
@@ -205,7 +175,9 @@ class EventGenerator {
         if (step.type !== 'loading' && step.type !== 'result') {
             const progress = ((this.currentStep + 1) / totalSteps) * 100;
             this.progressFill.style.width = `${progress}%`;
-            this.progressText.textContent = `Steg ${this.currentStep + 1} av ${totalSteps}`;
+            this.progressText.textContent = this.t('gen.progress')
+                .replace('{current}', `${this.currentStep + 1}`)
+                .replace('{total}', `${totalSteps}`);
             this.overlay.querySelector('.event-generator-progress').style.display = 'block';
         } else {
             this.overlay.querySelector('.event-generator-progress').style.display = 'none';
@@ -218,7 +190,7 @@ class EventGenerator {
             this.overlay.querySelector('.event-generator-navigation').style.display = 'none';
         } else {
             this.overlay.querySelector('.event-generator-navigation').style.display = 'flex';
-            this.nextBtn.textContent = this.currentStep === totalSteps - 1 ? 'Skapa min event-idé' : 'Nästa';
+            this.nextBtn.textContent = this.currentStep === totalSteps - 1 ? this.t('gen.create') : this.t('gen.next');
         }
         
         // Render content based on step type
@@ -254,13 +226,13 @@ class EventGenerator {
         return `
             <div class="form-fields">
                 <div class="form-group">
-                    <label for="generator-email">E-postadress</label>
-                    <input type="email" id="generator-email" name="email" placeholder="din@epost.se" required value="${this.userEmail}">
+                    <label for="generator-email">${this.t('gen.email.label')}</label>
+                    <input type="email" id="generator-email" name="email" placeholder="${this.t('gen.email.placeholder')}" required value="${this.userEmail}">
                 </div>
                 <div class="form-group checkbox-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="generator-consent" name="consent" ${this.answers.consent ? 'checked' : ''}>
-                        <span class="checkbox-text">Jag godkänner att We Are Bryssel sparar min e-postadress och kontaktar mig med information och erbjudanden. Läs vår <a href="integritetspolicy.html" target="_blank">integritetspolicy</a>.</span>
+                        <span class="checkbox-text">${this.t('gen.email.consent')}</span>
                     </label>
                 </div>
             </div>
@@ -283,7 +255,7 @@ class EventGenerator {
     renderMultiselectStep(step) {
         const selected = this.answers[step.id] || [];
         return `
-            <p class="multiselect-hint">Välj upp till ${step.maxSelect} alternativ</p>
+            <p class="multiselect-hint">${this.t('gen.multiselect.hint').replace('{max}', step.maxSelect)}</p>
             <div class="options-list multiselect">
                 ${step.options.map(option => `
                     <button class="option-btn ${selected.includes(option) ? 'selected' : ''}" data-value="${option}">
@@ -298,53 +270,53 @@ class EventGenerator {
         return `
             <div class="loading-container">
                 <div class="loading-spinner"></div>
-                <p class="loading-text">Analyserar dina svar...</p>
+                <p class="loading-text">${this.t('gen.loading.text')}</p>
             </div>
         `;
     }
 
     renderResultStep() {
         if (!this.generatedIdea) {
-            return '<p>Något gick fel. Försök igen.</p>';
+            return `<p>${this.t('gen.error.generic')}</p>`;
         }
         
         return `
             <div class="result-container">
                 <div class="result-content">
                     <div class="result-section">
-                        <h3>Koncept</h3>
+                        <h3>${this.t('gen.result.concept')}</h3>
                         <p class="concept-name">${this.generatedIdea.conceptName}</p>
                     </div>
                     
                     <div class="result-section">
-                        <h3>Beskrivning</h3>
+                        <h3>${this.t('gen.result.description')}</h3>
                         <p>${this.generatedIdea.description}</p>
                     </div>
                     
                     <div class="result-section">
-                        <h3>Nyckelmoment</h3>
+                        <h3>${this.t('gen.result.keymoments')}</h3>
                         <ul class="moments-list">
                             ${this.generatedIdea.keyMoments.map(m => `<li>${m}</li>`).join('')}
                         </ul>
                     </div>
                     
                     <div class="result-section">
-                        <h3>Wow-faktor</h3>
+                        <h3>${this.t('gen.result.wow')}</h3>
                         <p>${this.generatedIdea.wowFactor}</p>
                     </div>
                     
                     <div class="result-section result-recommendation">
-                        <h3>Vår rekommendation</h3>
-                        <p>${this.generatedIdea.recommendation || 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision.'}</p>
+                        <h3>${this.t('gen.result.recommendation')}</h3>
+                        <p>${this.generatedIdea.recommendation || this.t('gen.fallback.recommendation')}</p>
                     </div>
                 </div>
                 
                 <div class="result-actions">
-                    <button class="action-btn primary" id="contactUs">Kontakta oss för en komplett rekommendation</button>
-                    <button class="action-btn secondary" id="downloadPdf">Ladda ner som PDF</button>
+                    <button class="action-btn primary" id="contactUs">${this.t('gen.result.actions.contact')}</button>
+                    <button class="action-btn secondary" id="downloadPdf">${this.t('gen.result.actions.download')}</button>
                 </div>
                 
-                <p class="result-note">En kopia har skickats till ${this.userEmail}</p>
+                <p class="result-note">${this.t('gen.result.note').replace('{email}', this.userEmail)}</p>
             </div>
         `;
     }
@@ -413,11 +385,11 @@ class EventGenerator {
             const consent = this.answers.consent;
             
             if (!email || !this.isValidEmail(email)) {
-                this.showError('Ange en giltig e-postadress');
+                this.showError(this.t('gen.validation.email'));
                 return false;
             }
             if (!consent) {
-                this.showError('Du måste godkänna integritetspolicyn för att fortsätta');
+                this.showError(this.t('gen.validation.consent'));
                 return false;
             }
             return true;
@@ -425,7 +397,7 @@ class EventGenerator {
         
         if (step.type === 'select') {
             if (!this.answers[step.id]) {
-                this.showError('Välj ett alternativ för att fortsätta');
+                this.showError(this.t('gen.validation.select'));
                 return false;
             }
             return true;
@@ -433,7 +405,7 @@ class EventGenerator {
         
         if (step.type === 'multiselect') {
             if (!this.answers[step.id] || this.answers[step.id].length === 0) {
-                this.showError('Välj minst ett alternativ');
+                this.showError(this.t('gen.validation.multiselect'));
                 return false;
             }
             return true;
@@ -514,20 +486,36 @@ class EventGenerator {
     }
 
     generateFallbackIdea() {
-        const purpose = this.answers.purpose || 'Event';
-        const feeling = this.answers.feeling || ['Professionell'];
+        const isSv = (typeof currentLanguage !== 'undefined') ? currentLanguage === 'sv' : true;
+        const purpose = this.answers.purpose || (isSv ? 'Event' : 'Event');
+        const feeling = this.answers.feeling || (isSv ? ['Professionell'] : ['Professional']);
         
+        if (isSv) {
+            return {
+                conceptName: `${purpose} med Wow-faktor`,
+                description: `Ett skräddarsytt ${purpose.toLowerCase()} som kombinerar ${feeling.join(' och ').toLowerCase()} element för att skapa en minnesvärd upplevelse för era gäster. Konceptet bygger på er bransch och målgrupp för att maximera engagemang och resultat.`,
+                keyMoments: [
+                    'Välkomstupplevelse som sätter tonen direkt',
+                    'Interaktivt huvudmoment som engagerar alla sinnen',
+                    'Överraskande inslag mitt i programmet',
+                    'Minnesvärt avslut som gästerna tar med sig hem'
+                ],
+                wowFactor: 'En oväntad upplevelse som knyter an till ert varumärke och som gästerna kommer prata om långt efter eventet är över.',
+                recommendation: this.t('gen.fallback.recommendation')
+            };
+        }
+
         return {
-            conceptName: `${purpose} med Wow-faktor`,
-            description: `Ett skräddarsytt ${purpose.toLowerCase()} som kombinerar ${feeling.join(' och ').toLowerCase()} element för att skapa en minnesvärd upplevelse för era gäster. Konceptet bygger på er bransch och målgrupp för att maximera engagemang och resultat.`,
+            conceptName: `${purpose} with Wow Factor`,
+            description: `A tailored ${purpose.toLowerCase()} that combines ${feeling.join(' and ').toLowerCase()} elements to create a memorable experience for your guests. The concept is based on your industry and audience to maximize engagement and results.`,
             keyMoments: [
-                'Välkomstupplevelse som sätter tonen direkt',
-                'Interaktivt huvudmoment som engagerar alla sinnen',
-                'Överraskande inslag mitt i programmet',
-                'Minnesvärt avslut som gästerna tar med sig hem'
+                'Arrival experience that sets the tone immediately',
+                'Interactive main moment engaging all senses',
+                'Surprise element mid-program',
+                'Memorable closing guests take with them'
             ],
-            wowFactor: 'En oväntad upplevelse som knyter an till ert varumärke och som gästerna kommer prata om långt efter eventet är över.',
-            recommendation: 'Detta är bara en smakprov på vad vi kan skapa tillsammans! Kontakta oss på Bryssel så tar vi fram en komplett och djupgående rekommendation skräddarsydd efter just era behov, mål och vision. Vi ser fram emot att höra från er!'
+            wowFactor: 'An unexpected experience linked to your brand that guests will talk about long after the event is over.',
+            recommendation: this.t('gen.fallback.recommendation')
         };
     }
 
@@ -549,11 +537,13 @@ class EventGenerator {
 
     createPDFContent() {
         const idea = this.generatedIdea;
-        const date = new Date().toLocaleDateString('sv-SE');
+        const locale = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en-GB' : 'sv-SE';
+        const date = new Date().toLocaleDateString(locale);
+        const langAttr = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en' : 'sv';
         
         return `
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="${langAttr}">
 <head>
     <meta charset="UTF-8">
     <title>Event-Idé - We Are Bryssel</title>
@@ -805,6 +795,12 @@ class EventGenerator {
 </body>
 </html>
         `;
+    }
+
+    applyTranslations() {
+        if (this.closeBtn) this.closeBtn.setAttribute('aria-label', this.t('gen.close'));
+        if (this.prevBtn) this.prevBtn.textContent = this.t('gen.prev');
+        if (this.nextBtn) this.nextBtn.textContent = this.t('gen.next');
     }
 }
 

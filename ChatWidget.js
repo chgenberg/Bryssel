@@ -11,6 +11,10 @@ class ChatWidget {
         this.init();
     }
 
+    t(key) {
+        return window.t ? window.t(key) : key;
+    }
+
     init() {
         this.createWidget();
         this.attachEventListeners();
@@ -27,15 +31,15 @@ class ChatWidget {
                 <svg class="chat-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path>
                 </svg>
-                <span>Chatt</span>
+                <span data-i18n-chat="chat.button">${this.t('chat.button')}</span>
             </button>
 
             <!-- Chat Window -->
             <div class="chat-window" id="chat-window">
                 <div class="chat-header">
                     <div class="chat-header-content">
-                        <h3>Bryssel AI</h3>
-                        <p>Din göteborgska eventassistent 🦐</p>
+                        <h3 data-i18n-chat="chat.title">${this.t('chat.title')}</h3>
+                        <p data-i18n-chat="chat.subtitle">${this.t('chat.subtitle')}</p>
                     </div>
                     <button class="chat-close" id="chat-close">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -48,12 +52,12 @@ class ChatWidget {
                 <div class="chat-messages" id="chat-messages"></div>
 
                 <div class="common-questions" id="common-questions">
-                    <p class="common-questions-title">Vanliga frågor:</p>
+                    <p class="common-questions-title" data-i18n-chat="chat.common.title">${this.t('chat.common.title')}</p>
                     <div class="question-buttons" id="question-buttons"></div>
                 </div>
 
                 <div class="chat-input-container">
-                    <input type="text" class="chat-input" id="chat-input" placeholder="Skriv ditt meddelande..." />
+                    <input type="text" class="chat-input" id="chat-input" placeholder="${this.t('chat.input.placeholder')}" />
                     <button class="chat-send" id="chat-send">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -67,7 +71,7 @@ class ChatWidget {
             <div class="contact-form-modal" id="contact-form-modal">
                 <div class="contact-form">
                     <div class="contact-form-header">
-                        <h3>Kontakta oss</h3>
+                        <h3 data-i18n-chat="chat.form.title">${this.t('chat.form.title')}</h3>
                         <button class="contact-form-close" id="contact-form-close">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -77,60 +81,60 @@ class ChatWidget {
                     </div>
                     <form id="contact-form">
                         <div class="form-group">
-                            <label>Kontaktmetod *</label>
+                            <label data-i18n-chat="chat.form.method">${this.t('chat.form.method')}</label>
                             <select id="contact-method" required>
-                                <option value="">Välj kontaktmetod</option>
-                                <option value="email">E-post</option>
-                                <option value="phone">Telefon</option>
-                                <option value="meeting">Möte/Demo</option>
+                                <option value="">${this.t('chat.form.method.placeholder')}</option>
+                                <option value="email">${this.t('chat.form.method.email')}</option>
+                                <option value="phone">${this.t('chat.form.method.phone')}</option>
+                                <option value="meeting">${this.t('chat.form.method.meeting')}</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label>Intresse *</label>
+                            <label data-i18n-chat="chat.form.interest">${this.t('chat.form.interest')}</label>
                             <select id="interest" required>
-                                <option value="">Välj ditt intresse</option>
-                                <option value="event">Planera event</option>
-                                <option value="conference">Konferens</option>
-                                <option value="launch">Lansering</option>
-                                <option value="roadshow">Turné/Roadshow</option>
-                                <option value="other">Övrigt</option>
+                                <option value="">${this.t('chat.form.interest.placeholder')}</option>
+                                <option value="event">${this.t('chat.form.interest.event')}</option>
+                                <option value="conference">${this.t('chat.form.interest.conference')}</option>
+                                <option value="launch">${this.t('chat.form.interest.launch')}</option>
+                                <option value="roadshow">${this.t('chat.form.interest.roadshow')}</option>
+                                <option value="other">${this.t('chat.form.interest.other')}</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label>Namn *</label>
+                            <label data-i18n-chat="chat.form.name">${this.t('chat.form.name')}</label>
                             <input type="text" id="contact-name" required />
                         </div>
                         
                         <div class="form-group" id="email-group">
-                            <label>E-post *</label>
+                            <label data-i18n-chat="chat.form.email">${this.t('chat.form.email')}</label>
                             <input type="email" id="contact-email" />
                         </div>
                         
                         <div class="form-group" id="phone-group" style="display: none;">
-                            <label>Telefon *</label>
+                            <label data-i18n-chat="chat.form.phone">${this.t('chat.form.phone')}</label>
                             <input type="tel" id="contact-phone" />
                         </div>
                         
                         <div class="form-group">
-                            <label>Beskriv ditt projekt</label>
+                            <label data-i18n-chat="chat.form.description">${this.t('chat.form.description')}</label>
                             <textarea id="contact-description" rows="4"></textarea>
                         </div>
                         
                         <div class="form-group" id="date-group" style="display: none;">
-                            <label>Önskat datum</label>
+                            <label data-i18n-chat="chat.form.date">${this.t('chat.form.date')}</label>
                             <input type="date" id="contact-date" />
                         </div>
                         
                         <div class="form-group" id="time-group" style="display: none;">
-                            <label>Önskad tid</label>
+                            <label data-i18n-chat="chat.form.time">${this.t('chat.form.time')}</label>
                             <select id="contact-time">
-                                <option value="">Välj tid</option>
+                                <option value="">${this.t('chat.form.time.placeholder')}</option>
                             </select>
                         </div>
                         
-                        <button type="submit" class="submit-button">Skicka förfrågan</button>
+                        <button type="submit" class="submit-button" data-i18n-chat="chat.form.submit">${this.t('chat.form.submit')}</button>
                     </form>
                 </div>
             </div>
@@ -169,6 +173,8 @@ class ChatWidget {
         });
 
         this.updateCommonQuestions();
+
+        document.addEventListener('languageChanged', () => this.applyTranslations());
     }
 
     toggleChat() {
@@ -189,7 +195,7 @@ class ChatWidget {
     addWelcomeMessage() {
         const welcomeMsg = {
             type: 'bot',
-            content: 'Tjena! 👋 Jag är <strong>Bryssels AI-assistent</strong> – en riktig göteborgare som älskar event!<br><br>Fråga mig vad som helst om våra tjänster, event i allmänhet, eller om du vill skapa något riktigt fett. Vad kan jag hjälpa dig med iansen?',
+            content: this.t('chat.welcome'),
             time: new Date()
         };
         this.messages.push(welcomeMsg);
@@ -228,7 +234,7 @@ class ChatWidget {
             console.error('Chat error:', error);
             this.messages.push({
                 type: 'bot',
-                content: 'Oj, något gick snett där! 🙏<br><br>Prova igen eller kontakta oss på <strong>info@wearebryssel.se</strong> så hjälper vi dig.',
+                content: this.t('chat.error'),
                 time: new Date()
             });
         }
@@ -269,29 +275,50 @@ class ChatWidget {
 
     getLocalResponse(userInput) {
         const input = userInput.toLowerCase();
-        
-        // Göteborgsk fallback responses med HTML-formatering
-        if (input.includes('hej') || input.includes('hallå') || input.includes('tjena')) {
-            return 'Tjena gansen! 👋<br><br>Najs att du hör av dig! Jag kan hjälpa dig med allt som har med <strong>event</strong> att göra. Vad funderar du på?';
+
+        const isSv = (typeof currentLanguage !== 'undefined') ? currentLanguage === 'sv' : true;
+
+        const responsesSv = {
+            hello: 'Tjena gansen! 👋<br><br>Najs att du hör av dig! Jag kan hjälpa dig med allt som har med <strong>event</strong> att göra. Vad funderar du på?',
+            event: 'Åh, event va? Då snackar vi! 🎉<br><br>Det är ju det göttiga som finns! Vi på <strong>Bryssel</strong> fixar allt från läckra konferenser till feta lanseringar.<br><br>Berätta mer om vad du har i kikaren!',
+            price: 'Priset beror helt på hur stort och fräckt event du vill ha!<br><br>Vi <strong>skräddarsyr alltid</strong>, ingen copy-paste här inte. Hojta till på <strong>info@wearebryssel.se</strong> så tar vi en käk... eller ja, en offert! 😄',
+            gbg: '<strong>Göteborg!</strong> Bästa staden ansen! 💙🤍<br><br>Vi sitter på <strong>Kungstorget</strong> mitt i smeten. Perfekt läge för att fixa event i hela Västsverige... och resten av världen förstås!',
+            contact: 'Klart du ska höra av dig!<br><br>• Maila <strong>info@wearebryssel.se</strong><br>• Kom förbi kontoret på <strong>Kungstorget 11</strong><br><br>Vi bjuder på kaffe! ☕',
+            other: 'Intressant fråga! 🤔<br><br>Men jag är mest insnöad på <strong>event</strong> och <strong>Bryssel-relaterade</strong> grejer. Har du nån fråga om det så är jag på!<br><br>Annars kan du alltid maila oss på <strong>info@wearebryssel.se</strong>.'
+        };
+
+        const responsesEn = {
+            hello: 'Hey there! 👋<br><br>Great to hear from you! I can help with anything <strong>event</strong>-related. What are you thinking about?',
+            event: 'Oh, events? Now we’re talking! 🎉<br><br>That’s the fun stuff. At <strong>Bryssel</strong> we handle everything from sleek conferences to bold launches.<br><br>Tell me more about what you have in mind!',
+            price: 'Pricing depends on how big and bold you want to go!<br><br>We <strong>always tailor</strong> – no copy-paste. Ping <strong>info@wearebryssel.se</strong> and we’ll whip up an estimate!',
+            gbg: '<strong>Gothenburg!</strong> Best city around! 💙🤍<br><br>We’re based at <strong>Kungstorget</strong> in the heart of town. Perfect spot to deliver events across West Sweden… and beyond!',
+            contact: 'Absolutely, let’s talk!<br><br>• Email <strong>info@wearebryssel.se</strong><br>• Drop by the office at <strong>Kungstorget 11</strong><br><br>Coffee’s on us! ☕',
+            other: 'Interesting question! 🤔<br><br>I’m mainly focused on <strong>events</strong> and <strong>Bryssel-related</strong> topics. Got a question on that? I’m all ears!<br><br>Otherwise you can always email <strong>info@wearebryssel.se</strong>.'
+        };
+
+        const r = isSv ? responsesSv : responsesEn;
+
+        if (input.includes('hej') || input.includes('hallå') || input.includes('tjena') || input.includes('hello') || input.includes('hi')) {
+            return r.hello;
         }
         
-        if (input.includes('event') || input.includes('fest') || input.includes('konferens')) {
-            return 'Åh, event va? Då snackar vi! 🎉<br><br>Det är ju det göttiga som finns! Vi på <strong>Bryssel</strong> fixar allt från läckra konferenser till feta lanseringar.<br><br>Berätta mer om vad du har i kikaren!';
+        if (input.includes('event') || input.includes('fest') || input.includes('konferens') || input.includes('conference') || input.includes('party')) {
+            return r.event;
         }
         
-        if (input.includes('pris') || input.includes('kosta')) {
-            return 'Priset beror helt på hur stort och fräckt event du vill ha!<br><br>Vi <strong>skräddarsyr alltid</strong>, ingen copy-paste här inte. Hojta till på <strong>info@wearebryssel.se</strong> så tar vi en käk... eller ja, en offert! 😄';
+        if (input.includes('pris') || input.includes('kosta') || input.includes('price') || input.includes('cost')) {
+            return r.price;
         }
         
-        if (input.includes('göteborg') || input.includes('gbg')) {
-            return '<strong>Göteborg!</strong> Bästa staden ansen! 💙🤍<br><br>Vi sitter på <strong>Kungstorget</strong> mitt i smeten. Perfekt läge för att fixa event i hela Västsverige... och resten av världen förstås!';
+        if (input.includes('göteborg') || input.includes('gbg') || input.includes('gothenburg')) {
+            return r.gbg;
         }
         
-        if (input.includes('kontakt') || input.includes('boka')) {
-            return 'Klart du ska höra av dig!<br><br>• Maila <strong>info@wearebryssel.se</strong><br>• Kom förbi kontoret på <strong>Kungstorget 11</strong><br><br>Vi bjuder på kaffe! ☕';
+        if (input.includes('kontakt') || input.includes('boka') || input.includes('contact') || input.includes('book')) {
+            return r.contact;
         }
         
-        return 'Intressant fråga! 🤔<br><br>Men jag är mest insnöad på <strong>event</strong> och <strong>Bryssel-relaterade</strong> grejer. Har du nån fråga om det så är jag på!<br><br>Annars kan du alltid maila oss på <strong>info@wearebryssel.se</strong>.';
+        return r.other;
     }
 
     showTypingIndicator() {
@@ -343,14 +370,15 @@ class ChatWidget {
     }
 
     formatTime(date) {
-        return date.toLocaleTimeString('sv-SE', { hour: '2-digit', minute: '2-digit' });
+        const locale = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en') ? 'en-GB' : 'sv-SE';
+        return date.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
     }
 
     updateCommonQuestions() {
         const questions = [
-            'Vad kostar ett event?',
-            'Vilka tjänster erbjuder ni?',
-            'Hur bokar jag ett möte?'
+            this.t('chat.common.q1'),
+            this.t('chat.common.q2'),
+            this.t('chat.common.q3')
         ];
         
         const container = document.getElementById('question-buttons');
@@ -370,7 +398,7 @@ class ChatWidget {
         // Add contact button
         const contactButton = document.createElement('button');
         contactButton.className = 'question-button contact-button';
-        contactButton.textContent = 'Jag vill bli kontaktad';
+        contactButton.textContent = this.t('chat.common.contact');
         contactButton.addEventListener('click', () => this.toggleContactForm());
         container.appendChild(contactButton);
     }
@@ -480,8 +508,8 @@ class ChatWidget {
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
-            <h3>Tack för din förfrågan!</h3>
-            <p>Vi hör av oss inom kort. Läpp! 🙌</p>
+            <h3>${this.t('chat.form.success.title')}</h3>
+            <p>${this.t('chat.form.success.text')}</p>
         `;
         
         form.style.display = 'none';
@@ -491,6 +519,60 @@ class ChatWidget {
             form.style.display = 'block';
             successMessage.remove();
         }, 3000);
+    }
+
+    applyTranslations() {
+        // Update static texts
+        const map = {
+            'chat.button': this.container.querySelector('[data-i18n-chat="chat.button"]'),
+            'chat.title': this.container.querySelector('[data-i18n-chat="chat.title"]'),
+            'chat.subtitle': this.container.querySelector('[data-i18n-chat="chat.subtitle"]'),
+            'chat.common.title': this.container.querySelector('[data-i18n-chat="chat.common.title"]'),
+            'chat.form.title': this.container.querySelector('[data-i18n-chat="chat.form.title"]'),
+            'chat.form.method': this.container.querySelector('[data-i18n-chat="chat.form.method"]'),
+            'chat.form.interest': this.container.querySelector('[data-i18n-chat="chat.form.interest"]'),
+            'chat.form.name': this.container.querySelector('[data-i18n-chat="chat.form.name"]'),
+            'chat.form.email': this.container.querySelector('[data-i18n-chat="chat.form.email"]'),
+            'chat.form.phone': this.container.querySelector('[data-i18n-chat="chat.form.phone"]'),
+            'chat.form.description': this.container.querySelector('[data-i18n-chat="chat.form.description"]'),
+            'chat.form.date': this.container.querySelector('[data-i18n-chat="chat.form.date"]'),
+            'chat.form.time': this.container.querySelector('[data-i18n-chat="chat.form.time"]'),
+            'chat.form.submit': this.container.querySelector('[data-i18n-chat="chat.form.submit"]')
+        };
+
+        Object.keys(map).forEach(key => {
+            if (map[key]) map[key].textContent = this.t(key);
+        });
+
+        // Placeholders
+        const chatInput = document.getElementById('chat-input');
+        if (chatInput) chatInput.placeholder = this.t('chat.input.placeholder');
+
+        const contactMethod = document.getElementById('contact-method');
+        if (contactMethod) {
+            contactMethod.options[0].textContent = this.t('chat.form.method.placeholder');
+            contactMethod.options[1].textContent = this.t('chat.form.method.email');
+            contactMethod.options[2].textContent = this.t('chat.form.method.phone');
+            contactMethod.options[3].textContent = this.t('chat.form.method.meeting');
+        }
+
+        const interest = document.getElementById('interest');
+        if (interest) {
+            interest.options[0].textContent = this.t('chat.form.interest.placeholder');
+            interest.options[1].textContent = this.t('chat.form.interest.event');
+            interest.options[2].textContent = this.t('chat.form.interest.conference');
+            interest.options[3].textContent = this.t('chat.form.interest.launch');
+            interest.options[4].textContent = this.t('chat.form.interest.roadshow');
+            interest.options[5].textContent = this.t('chat.form.interest.other');
+        }
+
+        const timeSelect = document.getElementById('contact-time');
+        if (timeSelect && timeSelect.options.length > 0) {
+            timeSelect.options[0].textContent = this.t('chat.form.time.placeholder');
+        }
+
+        // Rebuild common questions
+        this.updateCommonQuestions();
     }
 }
 
